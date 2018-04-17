@@ -14,50 +14,38 @@ namespace Habraken_SLE
 
         protected int posX
         {
-            get => default(int);
-            set
-            {
-            }
+            get; set;
+
         }
 
         protected int posY
         {
-            get => default(int);
-            set
-            {
-            }
+            get; set;
+
         }
 
         protected int height
         {
-            get => default(int);
-            set
-            {
-            }
+            get; set;
+
         }
 
         protected int width
         {
-            get => default(int);
-            set
-            {
-            }
+            get; set;
+
         }
 
         protected int rotation
         {
-            get => default(int);
-            set
-            {
-            }
+            get; set;
+
         }
 
         protected int elementID
         {
-            get => default(int);
-            set
-            {
-            }
+            get; set;
+
         }
 
         public void Draw()

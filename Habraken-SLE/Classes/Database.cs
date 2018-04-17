@@ -45,12 +45,12 @@ namespace Habraken_SLE
 
         public void OpenConnection()
         {
-            throw new System.NotImplementedException();
+            con.Open();
         }
 
         public void CloseConnection()
         {
-            throw new System.NotImplementedException();
+            con.Close();
         }
 
         public void Query()

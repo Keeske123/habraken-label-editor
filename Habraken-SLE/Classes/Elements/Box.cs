@@ -14,10 +14,8 @@ namespace Habraken_SLE
 
         public Toolbox Toolbox
         {
-            get => default(Toolbox);
-            set
-            {
-            }
+            get; set;
+
         }
     }
 }

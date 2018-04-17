@@ -14,34 +14,25 @@ namespace Habraken_SLE
 
         public string fontType
         {
-            get => default(int);
-            set
-            {
-            }
+            get;set;
         }
 
         public int fontSize
         {
-            get => default(int);
-            set
-            {
-            }
+            get; set;
+
         }
 
         public string fontWeight
         {
-            get => default(int);
-            set
-            {
-            }
+            get; set;
+
         }
 
         public Toolbox Toolbox
         {
-            get => default(Toolbox);
-            set
-            {
-            }
+            get; set;
+
         }
     }
 }
