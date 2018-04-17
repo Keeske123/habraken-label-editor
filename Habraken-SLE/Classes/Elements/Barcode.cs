@@ -14,42 +14,32 @@ namespace Habraken_SLE
 
         public int font
         {
-            get => default(int);
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public string ratio
         {
-            get => default(int);
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public int type
         {
-            get => default(int);
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public int code
         {
-            get => default(int);
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public Toolbox Toolbox
         {
-            get => default(Toolbox);
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public void GenereateBarcode()

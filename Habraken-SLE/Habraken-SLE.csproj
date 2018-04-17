@@ -54,13 +54,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Box.cs" />
-    <Compile Include="Database.cs" />
-    <Compile Include="DragDrop.cs" />
-    <Compile Include="Line.cs" />
-    <Compile Include="Textbox.cs" />
-    <Compile Include="Toolbox.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Classes\Elements\Box.cs" />
+    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\Designer\DragDrop.cs" />
+    <Compile Include="Classes\Elements\Line.cs" />
+    <Compile Include="Classes\Elements\Textbox.cs" />
+    <Compile Include="Classes\Designer\Toolbox.cs" />
+    <Compile Include="Classes\User.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,10 +69,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Barcode.cs" />
-    <Compile Include="Designer.cs" />
-    <Compile Include="Element.cs" />
-    <Compile Include="Label.cs" />
+    <Compile Include="Classes\Elements\Barcode.cs" />
+    <Compile Include="Classes\Designer\Designer.cs" />
+    <Compile Include="Classes\Elements\Element.cs" />
+    <Compile Include="Classes\Label\Label.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -105,5 +105,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

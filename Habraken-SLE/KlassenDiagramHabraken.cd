@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Habraken_SLE.Barcode">
-    <Position X="14.25" Y="3.5" Width="1.75" />
+    <Position X="14.25" Y="3.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAJAAAAAAAAAAAAAAAAAAAAAKAABAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Barcode.cs</FileName>
@@ -31,7 +31,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Habraken_SLE.Element">
-    <Position X="11" Y="0.5" Width="1.5" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgQAQACEAAAAAAAAAAAAAAAAwAAAAAA=</HashCode>
       <FileName>Element.cs</FileName>
@@ -67,13 +67,13 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Habraken_SLE.Line">
-    <Position X="11.5" Y="4.75" Width="1.5" />
+    <Position X="11.5" Y="3.75" Width="1.5" />
     <InheritanceLine Type="Habraken_SLE.Element" FixedToPoint="true">
       <Path>
-        <Point X="11.75" Y="3.209" />
-        <Point X="11.75" Y="4.375" />
-        <Point X="12.312" Y="4.375" />
-        <Point X="12.312" Y="4.75" />
+        <Point X="11.25" Y="3.209" />
+        <Point X="11.25" Y="3.45" />
+        <Point X="12.312" Y="3.45" />
+        <Point X="12.312" Y="3.75" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -85,25 +85,25 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Habraken_SLE.Box">
-    <Position X="7.5" Y="3.5" Width="1.25" />
+    <Position X="7.5" Y="3.75" Width="1.25" />
     <InheritanceLine Type="Habraken_SLE.Element" FixedToPoint="true">
       <Path>
-        <Point X="11.75" Y="3.209" />
-        <Point X="11.75" Y="3.459" />
-        <Point X="8.125" Y="3.459" />
-        <Point X="8.125" Y="3.5" />
+        <Point X="11.25" Y="3.209" />
+        <Point X="11.25" Y="3.45" />
+        <Point X="8.125" Y="3.45" />
+        <Point X="8.125" Y="3.75" />
       </Path>
     </InheritanceLine>
     <AssociationLine Name="Toolbox" Type="Habraken_SLE.Toolbox" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="8.75" Y="4.116" />
-        <Point X="9.25" Y="4.116" />
-        <Point X="9.25" Y="6.233" />
-        <Point X="9.885" Y="6.233" Type="JumpStart" />
-        <Point X="10.052" Y="6.233" Type="JumpEnd" />
-        <Point X="12.448" Y="6.233" Type="JumpStart" />
-        <Point X="12.615" Y="6.233" Type="JumpEnd" />
-        <Point X="13.125" Y="6.233" />
+        <Point X="8.75" Y="4.366" />
+        <Point X="9.25" Y="4.366" />
+        <Point X="9.25" Y="6.069" />
+        <Point X="9.885" Y="6.069" Type="JumpStart" />
+        <Point X="10.052" Y="6.069" Type="JumpEnd" />
+        <Point X="12.448" Y="6.069" Type="JumpStart" />
+        <Point X="12.615" Y="6.069" Type="JumpEnd" />
+        <Point X="13.125" Y="6.069" />
         <Point X="13.125" Y="7.625" />
         <Point X="13.5" Y="7.625" />
       </Path>
