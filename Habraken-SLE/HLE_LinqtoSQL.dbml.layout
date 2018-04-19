@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 12.625" name="HLE_LinqtoSQL">
+  <DataContextMoniker Name="/HLE_LinqtoSQLDataContext" />
+  <nestedChildShapes>
+    <classShape Id="28c73dfe-e7a1-4441-8b11-e737190ac177" absoluteBounds="3.5, 6.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_barcode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e4ea72d5-47ea-4ecc-ac76-828ef971d83b" absoluteBounds="3.515, 7.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8e77d95f-c062-4aed-b6a4-8d810eea4d82" absoluteBounds="6.75, 5.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2cadce5b-7c6a-4e65-8ff1-4479329b03e6" absoluteBounds="6.765, 6.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f940fb8b-5de5-4514-97d6-f0afc24bf5d1" absoluteBounds="3.5, 3.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_box" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07644029-7ff1-48b3-a9f5-450745fb4478" absoluteBounds="3.515, 4.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="69ae6772-e759-474a-ab9f-2c516151d931" absoluteBounds="9.5, 1, 2, 1.3862939453125">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_infoBarcode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b4e2716f-6dc6-4d80-8b18-c31646c52a1e" absoluteBounds="9.515, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7dd9a84c-6b7a-415d-84e4-1a6953856d65" absoluteBounds="6.75, 2.125, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_InformationField" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80dac0b5-59f1-48de-8d7c-f4a4c123ad81" absoluteBounds="6.765, 2.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4cff37fb-f3b2-4abb-90dc-7f60e537faca" absoluteBounds="9.5, 3.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_infoTextbox" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c8cab118-3fe2-4dc5-b4d0-3f63fa272efa" absoluteBounds="9.515, 3.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1bdb0090-c923-4fe3-99c2-bbf85589e735" absoluteBounds="0.75, 6.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_label" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8658a39a-2934-4302-b742-389aba31a3da" absoluteBounds="0.765, 6.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="28b2c8f2-22df-4e25-b97a-a2d988220d8a" absoluteBounds="3.5, 1.375, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_line" />
+      <nestedChildShapes>
+        <elementListCompartment Id="db9565d4-814e-4244-a6f9-dfc1758c2ae4" absoluteBounds="3.515, 1.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="777089b3-45a0-4cba-ba0e-ff6e237ac611" absoluteBounds="3.5, 9.875, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/HLE_LinqtoSQLDataContext/tbl_textbox" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e6e34c0e-f7cb-472a-9a23-01886867e48f" absoluteBounds="3.515, 10.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.75 : 2.125); (7.75 : 1.5624995); (9.5 : 1.5624995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HLE_LinqtoSQLDataContext/tbl_InformationField/tbl_InformationField_tbl_infoBarcode" />
+      <nodes>
+        <classShapeMoniker Id="7dd9a84c-6b7a-415d-84e4-1a6953856d65" />
+        <classShapeMoniker Id="69ae6772-e759-474a-ab9f-2c516151d931" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 3.31814697265625); (9.5 : 3.31814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HLE_LinqtoSQLDataContext/tbl_InformationField/tbl_InformationField_tbl_infoTextbox" />
+      <nodes>
+        <classShapeMoniker Id="7dd9a84c-6b7a-415d-84e4-1a6953856d65" />
+        <classShapeMoniker Id="4cff37fb-f3b2-4abb-90dc-7f60e537faca" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.22679768880208); (3.5 : 7.22679768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HLE_LinqtoSQLDataContext/tbl_label/tbl_label_tbl_barcode" />
+      <nodes>
+        <classShapeMoniker Id="1bdb0090-c923-4fe3-99c2-bbf85589e735" />
+        <classShapeMoniker Id="28c73dfe-e7a1-4441-8b11-e737190ac177" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 6.125); (1.75 : 4.95274983723958); (2.19791916666667 : 4.95274983723958 : JumpStart); (2.36458583333333 : 4.95274983723958 : JumpEnd); (3.5 : 4.95274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HLE_LinqtoSQLDataContext/tbl_label/tbl_label_tbl_box" />
+      <nodes>
+        <classShapeMoniker Id="1bdb0090-c923-4fe3-99c2-bbf85589e735" />
+        <classShapeMoniker Id="f940fb8b-5de5-4514-97d6-f0afc24bf5d1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 6.125); (2.2812525 : 2.26044840494792); (3.5 : 2.26044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HLE_LinqtoSQLDataContext/tbl_label/tbl_label_tbl_line" />
+      <nodes>
+        <classShapeMoniker Id="1bdb0090-c923-4fe3-99c2-bbf85589e735" />
+        <classShapeMoniker Id="28b2c8f2-22df-4e25-b97a-a2d988220d8a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 7.70359537760417); (1.75 : 11.1450512695312); (3.5 : 11.1450512695312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HLE_LinqtoSQLDataContext/tbl_label/tbl_label_tbl_textbox" />
+      <nodes>
+        <classShapeMoniker Id="1bdb0090-c923-4fe3-99c2-bbf85589e735" />
+        <classShapeMoniker Id="777089b3-45a0-4cba-ba0e-ff6e237ac611" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

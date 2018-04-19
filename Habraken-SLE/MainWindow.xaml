@@ -4,9 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Habraken_SLE"
+        xmlns:myControls="clr-namespace:Habraken_SLE.Overlays"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="515">
+        Title="MainWindow" Height="1080" Width="1920" WindowStyle="None" WindowState="Maximized">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75*"></RowDefinition>
+            <RowDefinition Height="608*"></RowDefinition>
+            <RowDefinition Height="75*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" x:Name="gridHeader" Background="#FF0017FF" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="637*"/>
+                    <ColumnDefinition Width="878*"/>
+                    <ColumnDefinition Width="397*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="gridLogin" Grid.Column="2">
+                    <Button x:Name="btnLogin" Margin="297,10,10,10" FontSize="20" Click="btnLogin_Click">Login</Button>
+                    <PasswordBox x:Name="pb_Login" Margin="42,24,105,26" FontSize="40" PasswordChar="*"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="gridMain" Grid.Row="1">
+            <myControls:Designer x:Name="designer" Visibility="Hidden" />
+            <myControls:Logo x:Name="Logo" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center" Height="534" Width="1092" />
+        </Grid>
+
+        <Grid Grid.Row="2" Background="#FF0017FF"></Grid>
     </Grid>
 </Window>

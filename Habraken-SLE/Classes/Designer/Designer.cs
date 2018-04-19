@@ -7,9 +7,10 @@ namespace Habraken_SLE
 {
     public class Designer
     {
+        public string test;
         public Designer()
         {
-            throw new System.NotImplementedException();
+           
         }
 
         public Database Database

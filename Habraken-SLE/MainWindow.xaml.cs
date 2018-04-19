@@ -20,9 +20,30 @@ namespace Habraken_SLE
     /// </summary>
     public partial class MainWindow : Window
     {
+        Database db;
         public MainWindow()
         {
+            db = new Database();
+            
             InitializeComponent();
+
+            //MessageBox.Show(db.TestConnection());            
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            switch (db.Query("Login", pb_Login.Password))
+            {
+                case "OK":
+                    designer.Visibility = Visibility.Visible;
+                    Logo.Visibility = Visibility.Collapsed;
+                    break;
+
+                case "Fail":
+                    designer.Visibility = Visibility.Collapsed;
+                    Logo.Visibility = Visibility.Visible;
+                    break;
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Habraken_SLE
@@ -9,6 +10,7 @@ namespace Habraken_SLE
     public class Database
     {
         private string connectionString;
+        private string result = "";
         private SqlConnection con;
 
         public Database()
@@ -21,15 +23,12 @@ namespace Habraken_SLE
 
         public string connection
         {
-            get => default(string);
-            set
-            {
-            }
+            get; set;
+
         }
 
         public string TestConnection()
         {
-            string result = "";
             try
             {
                 OpenConnection();
@@ -53,9 +52,40 @@ namespace Habraken_SLE
             con.Close();
         }
 
-        public void Query()
+        public string Query(string type, string input)
         {
-            throw new System.NotImplementedException();
+            switch (type)
+            {
+                case "Login":
+                    result = Login(input);
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
+
+        private string Login(string input)
+        {
+            try
+            {
+                var db = new HLE_LinqtoSQLDataContext();
+                tbl_User t = null;
+
+                t = db.tbl_Users.Single(p => p.UserID == Convert.ToInt32(input));
+
+                if (t != null)
+                {
+                    result = "OK";
+                }
+            }
+            catch
+            {
+                result = "Fail";
+            }
+
+            return result;
         }
     }
 }
