@@ -13,13 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Habraken_SLE
+namespace Habraken_SLE.Overlays
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Designer.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Designer : UserControl
     {
-
+        public Designer()
+        {
+            InitializeComponent();
+        }
     }
 }

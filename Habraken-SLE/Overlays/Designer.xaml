@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Habraken_SLE.Overlays.Designer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Habraken_SLE.Overlays"
+             mc:Ignorable="d" 
+             d:DesignHeight="608" d:DesignWidth="1912">
+    <Grid Background="green">
+           
+    </Grid>
+</UserControl>

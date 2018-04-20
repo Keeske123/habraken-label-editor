@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbLabelEditor" Class="HLE_LinqtoSQLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\dbLabelEditor.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="Habraken_SLE.Properties.Settings" SettingsPropertyName="dbLabelEditorConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_barcode" Member="tbl_barcodes">
+    <Type Name="tbl_barcode">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Thickness" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Ratio" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_barcode_tbl_infoBarcode" Member="tbl_infoBarcodes" ThisKey="Id" OtherKey="BarcodeID" Type="tbl_infoBarcode" />
+      <Association Name="tbl_label_tbl_barcode" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Users" Member="tbl_Users">
+    <Type Name="tbl_User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UserProfile" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_boxes" Member="tbl_boxes">
+    <Type Name="tbl_box">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Thickness" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Heigth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_label_tbl_box" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_infoBarcode" Member="tbl_infoBarcodes">
+    <Type Name="tbl_infoBarcode">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InformationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BarcodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumCharPos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_barcode_tbl_infoBarcode" Member="tbl_barcode" ThisKey="BarcodeID" OtherKey="Id" Type="tbl_barcode" IsForeignKey="true" />
+      <Association Name="tbl_InformationField_tbl_infoBarcode" Member="tbl_InformationField" ThisKey="InformationID" OtherKey="Id" Type="tbl_InformationField" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_InformationFields" Member="tbl_InformationFields">
+    <Type Name="tbl_InformationField">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InformationName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MinCharPos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_InformationField_tbl_infoBarcode" Member="tbl_infoBarcodes" ThisKey="Id" OtherKey="InformationID" Type="tbl_infoBarcode" />
+      <Association Name="tbl_InformationField_tbl_infoTextbox" Member="tbl_infoTextboxes" ThisKey="Id" OtherKey="InformationID" Type="tbl_infoTextbox" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_infoTextbox" Member="tbl_infoTextboxes">
+    <Type Name="tbl_infoTextbox">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InformationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TextboxID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumCharPos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_InformationField_tbl_infoTextbox" Member="tbl_InformationField" ThisKey="InformationID" OtherKey="Id" Type="tbl_InformationField" IsForeignKey="true" />
+      <Association Name="tbl_textbox_tbl_infoTextbox" Member="tbl_textbox" ThisKey="TextboxID" OtherKey="Id" Type="tbl_textbox" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_labels" Member="tbl_labels">
+    <Type Name="tbl_label">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Heigth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_label_tbl_barcode" Member="tbl_barcodes" ThisKey="Id" OtherKey="LabelID" Type="tbl_barcode" />
+      <Association Name="tbl_label_tbl_box" Member="tbl_boxes" ThisKey="Id" OtherKey="LabelID" Type="tbl_box" />
+      <Association Name="tbl_label_tbl_line" Member="tbl_lines" ThisKey="Id" OtherKey="LabelID" Type="tbl_line" />
+      <Association Name="tbl_label_tbl_textbox" Member="tbl_textboxes" ThisKey="Id" OtherKey="LabelID" Type="tbl_textbox" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_lines" Member="tbl_lines">
+    <Type Name="tbl_line">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Thickness" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_label_tbl_line" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_textboxes" Member="tbl_textboxes">
+    <Type Name="tbl_textbox">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fonttype" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Fontsize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FontWeight" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_textbox_tbl_infoTextbox" Member="tbl_infoTextboxes" ThisKey="Id" OtherKey="TextboxID" Type="tbl_infoTextbox" />
+      <Association Name="tbl_label_tbl_textbox" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
