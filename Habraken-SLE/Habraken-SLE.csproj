@@ -159,6 +159,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>dbLabelEditor.mdf</DependentUpon>
     </Content>
+    <Resource Include="Images\Login.png" />
+    <Resource Include="Images\Logout.png" />
     <Resource Include="Images\Naaimachine.png" />
   </ItemGroup>
   <ItemGroup>

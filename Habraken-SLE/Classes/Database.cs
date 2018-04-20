@@ -52,40 +52,14 @@ namespace Habraken_SLE
             con.Close();
         }
 
-        public string Query(string type, string input)
+        public void Query()
         {
-            switch (type)
-            {
-                case "Login":
-                    result = Login(input);
-                    break;
-                default:
-                    break;
-            }
 
-            return result;
         }
 
         private string Login(string input)
         {
-            try
-            {
-                var db = new HLE_LinqtoSQLDataContext();
-                tbl_User t = null;
-
-                t = db.tbl_Users.Single(p => p.UserID == Convert.ToInt32(input));
-
-                if (t != null)
-                {
-                    result = "OK";
-                }
-            }
-            catch
-            {
-                result = "Fail";
-            }
-
-            return result;
+            return "";
         }
     }
 }

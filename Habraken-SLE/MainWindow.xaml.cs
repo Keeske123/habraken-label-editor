@@ -21,28 +21,52 @@ namespace Habraken_SLE
     public partial class MainWindow : Window
     {
         Database db;
+        User user;
+
         public MainWindow()
         {
             db = new Database();
-            
-            InitializeComponent();
+            user = new User();
 
-            //MessageBox.Show(db.TestConnection());            
+            InitializeComponent();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            switch (db.Query("Login", pb_Login.Password))
+            
+
+            if (user.isLoggedIn)
             {
-                case "OK":
+                designer.Visibility = Visibility.Collapsed;
+                Logo.Visibility = Visibility.Visible;
+                pb_Login.Visibility = Visibility.Visible;
+
+                pb_Login.Clear();
+
+                user.isLoggedIn = false;
+
+                imgLogin.Source = new BitmapImage(new Uri(@"\Images\Login.png", UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                user.Login(pb_Login.Password);
+
+                if (user.isLoggedIn)
+                {
                     designer.Visibility = Visibility.Visible;
                     Logo.Visibility = Visibility.Collapsed;
-                    break;
+                    pb_Login.Visibility = Visibility.Collapsed;
 
-                case "Fail":
-                    designer.Visibility = Visibility.Collapsed;
-                    Logo.Visibility = Visibility.Visible;
-                    break;
+                    imgLogin.Source = new BitmapImage(new Uri(@"\Images\Logout.png", UriKind.RelativeOrAbsolute));
+
+                    lblUserName.Content = user.currentUser;
+                    lblUserProfile.Content = user.currentProfile;
+
+                }
+                else
+                {
+                    MessageBox.Show("Wrong ID");
+                }
             }
         }
     }

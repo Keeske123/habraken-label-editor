@@ -184,6 +184,8 @@ namespace Habraken_SLE
 		
 		private string _Ratio;
 		
+		private EntitySet<tbl_infoBarcode> _tbl_infoBarcodes;
+		
 		private EntityRef<tbl_label> _tbl_label;
 		
     #region Extensibility Method Definitions
@@ -210,6 +212,7 @@ namespace Habraken_SLE
 		
 		public tbl_barcode()
 		{
+			this._tbl_infoBarcodes = new EntitySet<tbl_infoBarcode>(new Action<tbl_infoBarcode>(this.attach_tbl_infoBarcodes), new Action<tbl_infoBarcode>(this.detach_tbl_infoBarcodes));
 			this._tbl_label = default(EntityRef<tbl_label>);
 			OnCreated();
 		}
@@ -378,6 +381,19 @@ namespace Habraken_SLE
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_barcode_tbl_infoBarcode", Storage="_tbl_infoBarcodes", ThisKey="Id", OtherKey="BarcodeID")]
+		public EntitySet<tbl_infoBarcode> tbl_infoBarcodes
+		{
+			get
+			{
+				return this._tbl_infoBarcodes;
+			}
+			set
+			{
+				this._tbl_infoBarcodes.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_label_tbl_barcode", Storage="_tbl_label", ThisKey="LabelID", OtherKey="Id", IsForeignKey=true)]
 		public tbl_label tbl_label
 		{
@@ -431,6 +447,18 @@ namespace Habraken_SLE
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_tbl_infoBarcodes(tbl_infoBarcode entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_barcode = this;
+		}
+		
+		private void detach_tbl_infoBarcodes(tbl_infoBarcode entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_barcode = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Users")]
@@ -443,7 +471,7 @@ namespace Habraken_SLE
 		
 		private string _UserName;
 		
-		private int _UserID;
+		private string _UserID;
 		
 		private string _UserProfile;
 		
@@ -455,7 +483,7 @@ namespace Habraken_SLE
     partial void OnIdChanged();
     partial void OnUserNameChanging(string value);
     partial void OnUserNameChanged();
-    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanging(string value);
     partial void OnUserIDChanged();
     partial void OnUserProfileChanging(string value);
     partial void OnUserProfileChanged();
@@ -506,8 +534,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string UserID
 		{
 			get
 			{
@@ -824,7 +852,11 @@ namespace Habraken_SLE
 		
 		private int _InformationID;
 		
+		private int _BarcodeID;
+		
 		private int _NumCharPos;
+		
+		private EntityRef<tbl_barcode> _tbl_barcode;
 		
 		private EntityRef<tbl_InformationField> _tbl_InformationField;
 		
@@ -836,12 +868,15 @@ namespace Habraken_SLE
     partial void OnIdChanged();
     partial void OnInformationIDChanging(int value);
     partial void OnInformationIDChanged();
+    partial void OnBarcodeIDChanging(int value);
+    partial void OnBarcodeIDChanged();
     partial void OnNumCharPosChanging(int value);
     partial void OnNumCharPosChanged();
     #endregion
 		
 		public tbl_infoBarcode()
 		{
+			this._tbl_barcode = default(EntityRef<tbl_barcode>);
 			this._tbl_InformationField = default(EntityRef<tbl_InformationField>);
 			OnCreated();
 		}
@@ -890,6 +925,30 @@ namespace Habraken_SLE
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BarcodeID", DbType="Int NOT NULL")]
+		public int BarcodeID
+		{
+			get
+			{
+				return this._BarcodeID;
+			}
+			set
+			{
+				if ((this._BarcodeID != value))
+				{
+					if (this._tbl_barcode.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBarcodeIDChanging(value);
+					this.SendPropertyChanging();
+					this._BarcodeID = value;
+					this.SendPropertyChanged("BarcodeID");
+					this.OnBarcodeIDChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumCharPos", DbType="Int NOT NULL")]
 		public int NumCharPos
 		{
@@ -906,6 +965,40 @@ namespace Habraken_SLE
 					this._NumCharPos = value;
 					this.SendPropertyChanged("NumCharPos");
 					this.OnNumCharPosChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_barcode_tbl_infoBarcode", Storage="_tbl_barcode", ThisKey="BarcodeID", OtherKey="Id", IsForeignKey=true)]
+		public tbl_barcode tbl_barcode
+		{
+			get
+			{
+				return this._tbl_barcode.Entity;
+			}
+			set
+			{
+				tbl_barcode previousValue = this._tbl_barcode.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_barcode.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_barcode.Entity = null;
+						previousValue.tbl_infoBarcodes.Remove(this);
+					}
+					this._tbl_barcode.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_infoBarcodes.Add(this);
+						this._BarcodeID = value.Id;
+					}
+					else
+					{
+						this._BarcodeID = default(int);
+					}
+					this.SendPropertyChanged("tbl_barcode");
 				}
 			}
 		}
@@ -1141,9 +1234,13 @@ namespace Habraken_SLE
 		
 		private int _InformationID;
 		
+		private int _TextboxID;
+		
 		private int _NumCharPos;
 		
 		private EntityRef<tbl_InformationField> _tbl_InformationField;
+		
+		private EntityRef<tbl_textbox> _tbl_textbox;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1153,6 +1250,8 @@ namespace Habraken_SLE
     partial void OnIdChanged();
     partial void OnInformationIDChanging(int value);
     partial void OnInformationIDChanged();
+    partial void OnTextboxIDChanging(int value);
+    partial void OnTextboxIDChanged();
     partial void OnNumCharPosChanging(int value);
     partial void OnNumCharPosChanged();
     #endregion
@@ -1160,6 +1259,7 @@ namespace Habraken_SLE
 		public tbl_infoTextbox()
 		{
 			this._tbl_InformationField = default(EntityRef<tbl_InformationField>);
+			this._tbl_textbox = default(EntityRef<tbl_textbox>);
 			OnCreated();
 		}
 		
@@ -1203,6 +1303,30 @@ namespace Habraken_SLE
 					this._InformationID = value;
 					this.SendPropertyChanged("InformationID");
 					this.OnInformationIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TextboxID", DbType="Int NOT NULL")]
+		public int TextboxID
+		{
+			get
+			{
+				return this._TextboxID;
+			}
+			set
+			{
+				if ((this._TextboxID != value))
+				{
+					if (this._tbl_textbox.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTextboxIDChanging(value);
+					this.SendPropertyChanging();
+					this._TextboxID = value;
+					this.SendPropertyChanged("TextboxID");
+					this.OnTextboxIDChanged();
 				}
 			}
 		}
@@ -1257,6 +1381,40 @@ namespace Habraken_SLE
 						this._InformationID = default(int);
 					}
 					this.SendPropertyChanged("tbl_InformationField");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_textbox_tbl_infoTextbox", Storage="_tbl_textbox", ThisKey="TextboxID", OtherKey="Id", IsForeignKey=true)]
+		public tbl_textbox tbl_textbox
+		{
+			get
+			{
+				return this._tbl_textbox.Entity;
+			}
+			set
+			{
+				tbl_textbox previousValue = this._tbl_textbox.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_textbox.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_textbox.Entity = null;
+						previousValue.tbl_infoTextboxes.Remove(this);
+					}
+					this._tbl_textbox.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_infoTextboxes.Add(this);
+						this._TextboxID = value.Id;
+					}
+					else
+					{
+						this._TextboxID = default(int);
+					}
+					this.SendPropertyChanged("tbl_textbox");
 				}
 			}
 		}
@@ -1751,6 +1909,8 @@ namespace Habraken_SLE
 		
 		private string _FontWeight;
 		
+		private EntitySet<tbl_infoTextbox> _tbl_infoTextboxes;
+		
 		private EntityRef<tbl_label> _tbl_label;
 		
     #region Extensibility Method Definitions
@@ -1779,6 +1939,7 @@ namespace Habraken_SLE
 		
 		public tbl_textbox()
 		{
+			this._tbl_infoTextboxes = new EntitySet<tbl_infoTextbox>(new Action<tbl_infoTextbox>(this.attach_tbl_infoTextboxes), new Action<tbl_infoTextbox>(this.detach_tbl_infoTextboxes));
 			this._tbl_label = default(EntityRef<tbl_label>);
 			OnCreated();
 		}
@@ -1967,6 +2128,19 @@ namespace Habraken_SLE
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_textbox_tbl_infoTextbox", Storage="_tbl_infoTextboxes", ThisKey="Id", OtherKey="TextboxID")]
+		public EntitySet<tbl_infoTextbox> tbl_infoTextboxes
+		{
+			get
+			{
+				return this._tbl_infoTextboxes;
+			}
+			set
+			{
+				this._tbl_infoTextboxes.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_label_tbl_textbox", Storage="_tbl_label", ThisKey="LabelID", OtherKey="Id", IsForeignKey=true)]
 		public tbl_label tbl_label
 		{
@@ -2019,6 +2193,18 @@ namespace Habraken_SLE
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_tbl_infoTextboxes(tbl_infoTextbox entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_textbox = this;
+		}
+		
+		private void detach_tbl_infoTextboxes(tbl_infoTextbox entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_textbox = null;
 		}
 	}
 }

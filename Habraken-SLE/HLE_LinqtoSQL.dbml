@@ -10,6 +10,7 @@
       <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Thickness" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Ratio" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_barcode_tbl_infoBarcode" Member="tbl_infoBarcodes" ThisKey="Id" OtherKey="BarcodeID" Type="tbl_infoBarcode" />
       <Association Name="tbl_label_tbl_barcode" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
     </Type>
   </Table>
@@ -17,7 +18,7 @@
     <Type Name="tbl_User">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="UserProfile" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
@@ -37,7 +38,9 @@
     <Type Name="tbl_infoBarcode">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="InformationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BarcodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="NumCharPos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_barcode_tbl_infoBarcode" Member="tbl_barcode" ThisKey="BarcodeID" OtherKey="Id" Type="tbl_barcode" IsForeignKey="true" />
       <Association Name="tbl_InformationField_tbl_infoBarcode" Member="tbl_InformationField" ThisKey="InformationID" OtherKey="Id" Type="tbl_InformationField" IsForeignKey="true" />
     </Type>
   </Table>
@@ -54,8 +57,10 @@
     <Type Name="tbl_infoTextbox">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="InformationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TextboxID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="NumCharPos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="tbl_InformationField_tbl_infoTextbox" Member="tbl_InformationField" ThisKey="InformationID" OtherKey="Id" Type="tbl_InformationField" IsForeignKey="true" />
+      <Association Name="tbl_textbox_tbl_infoTextbox" Member="tbl_textbox" ThisKey="TextboxID" OtherKey="Id" Type="tbl_textbox" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_labels" Member="tbl_labels">
@@ -91,6 +96,7 @@
       <Column Name="Fonttype" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Fontsize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="FontWeight" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_textbox_tbl_infoTextbox" Member="tbl_infoTextboxes" ThisKey="Id" OtherKey="TextboxID" Type="tbl_infoTextbox" />
       <Association Name="tbl_label_tbl_textbox" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
     </Type>
   </Table>
