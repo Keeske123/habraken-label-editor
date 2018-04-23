@@ -33,12 +33,15 @@ namespace Habraken_SLE
                                 where q.UserID == input
                                 select q;
 
+                   //var abc = db.tbl_Users.Where(user => user.UserID == input).FirstOrDefault();
+
                     foreach (var user in query)
                     {
                         currentUser = user.UserName;
                         currentProfile = user.UserProfile;
                     }
                 }
+                
             }
             catch
             {

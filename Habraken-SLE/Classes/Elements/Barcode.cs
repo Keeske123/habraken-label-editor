@@ -9,7 +9,6 @@ namespace Habraken_SLE
     {
         public Barcode()
         {
-            throw new System.NotImplementedException();
         }
 
         public int font

@@ -32,8 +32,7 @@ namespace Habraken_SLE
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {           
 
             if (user.isLoggedIn)
             {
@@ -68,6 +67,11 @@ namespace Habraken_SLE
                     MessageBox.Show("Wrong ID");
                 }
             }
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

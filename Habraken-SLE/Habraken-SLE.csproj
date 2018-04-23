@@ -106,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Overlays\Toolbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Overlays\Designer.xaml.cs">
@@ -113,6 +117,9 @@
     </Compile>
     <Compile Include="Overlays\Logo.xaml.cs">
       <DependentUpon>Logo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Overlays\Toolbox.xaml.cs">
+      <DependentUpon>Toolbox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -159,6 +166,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>dbLabelEditor.mdf</DependentUpon>
     </Content>
+    <Resource Include="Images\exit.png" />
     <Resource Include="Images\Login.png" />
     <Resource Include="Images\Logout.png" />
     <Resource Include="Images\Naaimachine.png" />

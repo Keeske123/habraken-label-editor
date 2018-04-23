@@ -9,7 +9,7 @@ namespace Habraken_SLE
     {
         public Element()
         {
-            throw new System.NotImplementedException();
+           
         }
 
         protected int posX
@@ -50,7 +50,6 @@ namespace Habraken_SLE
 
         public void Draw()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

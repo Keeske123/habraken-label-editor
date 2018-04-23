@@ -44,7 +44,11 @@
         </Grid>
 
         <Grid Grid.Row="2" Background="#FF0017FF">
-
+            <Button x:Name="btnExit" Margin="0,0,1882,0" Background="Transparent" Click="btnExit_Click">
+                <StackPanel>
+                    <Image x:Name="imgExit" Source="/Images/exit.png" Stretch="Fill" Height="28" Width="25"/>
+                </StackPanel>
+            </Button>
         </Grid>
     </Grid>
 </Window>
