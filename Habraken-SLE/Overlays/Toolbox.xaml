@@ -6,8 +6,31 @@
              xmlns:local="clr-namespace:Habraken_SLE.Overlays"
              mc:Ignorable="d" Width="199.333" Height="213.333">
     <Grid>
-        <ListBox x:Name="lbToolbox">
-            <ListBoxItem x:Name="liBarcode" Content="Barcode" FontSize="16" />
+        <ListBox x:Name="lbToolbox" SelectedItem="lbToolbox_SelectedItem" >
+            <ListBoxItem Height="auto" x:Name="liBarcode" FontSize="16" Width="189" >
+                <Grid x:Name="gridBarcode" Width="178"  MouseLeftButtonDown="liBarcode_MouseLeftButtonDown">
+                    <Image Source="/images/icons8-barcode-scanner-26.png"  Stretch="Uniform" Margin="0,0,157,0" />
+                    <Label Content="Barcode" Margin="34,0,36,0"/>
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Height="auto" x:Name="liTextbox" FontSize="16">
+                <Grid x:Name="gridTextbox" Width="178">
+                    <Image Source="/images/icons8-text-box-24.png"  Stretch="Uniform" Margin="0,0,149,0"/>
+                    <Label Content="Textbox" Margin="34,0,36,0" />
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem x:Name="liLine" FontSize="16">
+                <Grid x:Name="gridLine" Width="178">
+                    <Image Source="/images/icons8-line-26.png"  Stretch="Uniform" Margin="0,0,157,0"/>
+                    <Label Content="Line" Margin="34,0,36,0" />
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Height="auto" x:Name="liBox" FontSize="16">
+                <Grid x:Name="gridBox" Width="178">
+                    <Image Source="/images/icons8-unchecked-checkbox-26.png"  Stretch="Uniform" Margin="0,0,157,0"/>
+                    <Label Content="Box" Margin="34,0,36,0" />
+                </Grid>
+            </ListBoxItem>
         </ListBox>
     </Grid>
 </UserControl>

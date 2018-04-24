@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="608" d:DesignWidth="1912">
     <Grid Background="OldLace">
-        <local:Toolbox x:Name="ucToolbox" Margin="10,10,1602,298"/>
+        <local:Toolbox x:Name="ucToolbox" Margin="76,54,1637,0" VerticalAlignment="Top" Height="213"/>
     </Grid>
 </UserControl>

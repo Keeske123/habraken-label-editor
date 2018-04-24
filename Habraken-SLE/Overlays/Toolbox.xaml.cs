@@ -20,10 +20,19 @@ namespace Habraken_SLE.Overlays
     /// </summary>
     public partial class Toolbox : UserControl
     {
+
+        
+
         public Toolbox()
         {           
 
             InitializeComponent();
+        }
+
+
+        private void liBarcode_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Test");
         }
     }
 }

@@ -166,6 +166,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>dbLabelEditor.mdf</DependentUpon>
     </Content>
+    <Resource Include="Images\icons8-text-box-24.png" />
+    <Resource Include="Images\icons8-unchecked-checkbox-26.png" />
+    <Resource Include="Images\icons8-line-26.png" />
+    <Resource Include="Images\icons8-barcode-scanner-26.png" />
     <Resource Include="Images\exit.png" />
     <Resource Include="Images\Login.png" />
     <Resource Include="Images\Logout.png" />

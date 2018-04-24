@@ -60,7 +60,6 @@ namespace Habraken_SLE
 
                     lblUserName.Content = user.currentUser;
                     lblUserProfile.Content = user.currentProfile;
-
                 }
                 else
                 {
