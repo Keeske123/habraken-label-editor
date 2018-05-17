@@ -7,9 +7,15 @@ namespace Habraken_SLE
 {
     public class User
     {
+        string con = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\AFSTUDEER STAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\Periode 11 - 12\Habraken\Habraken - SLE\dbLabelEditor.mdf;Integrated Security=True";
         public bool isLoggedIn { get; set; }
+
         public string currentUser { get; set; }
         public string currentProfile { get; set; }
+
+        public bool canEdit { get; set; }
+        public bool canPrint { get; set; }
+        public bool canSave { get; set; }
 
         public User()
         {
@@ -20,7 +26,7 @@ namespace Habraken_SLE
         {
             try
             {
-                var db = new HLE_LinqtoSQLDataContext();
+                var db = new HLE_LinqtoSQLDataContext(con);
                 tbl_User t = null;
 
                 t = db.tbl_Users.Single(p => p.UserID == input);
@@ -38,7 +44,18 @@ namespace Habraken_SLE
                     foreach (var user in query)
                     {
                         currentUser = user.UserName;
-                        currentProfile = user.UserProfile;
+
+                        var selectProfile = from q in db.tbl_userProfiles
+                                            where q.Id == user.UserProfileID
+                                            select q;
+
+                        foreach (var profile in selectProfile)
+                        {
+                            currentProfile = profile.Userprofile;
+                            canEdit = profile.CanEdit;
+                            canPrint = profile.CanPrint;
+                            canSave = profile.CanSave;
+                        }
                     }
                 }
                 
@@ -53,5 +70,7 @@ namespace Habraken_SLE
         {
             throw new System.NotImplementedException();
         }
+
+      
     }
 }

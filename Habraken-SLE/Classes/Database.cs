@@ -15,7 +15,7 @@ namespace Habraken_SLE
 
         public Database()
         {
-            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Habraken Label Editor Database\dbLabelEditor.mdf;Integrated Security=True;Connect Timeout=30";
+            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\AFSTUDEER STAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\Periode 11 - 12\Habraken\Habraken - SLE\dbLabelEditor.mdf;Integrated Security=True";
             con = new SqlConnection(connectionString);
 
             

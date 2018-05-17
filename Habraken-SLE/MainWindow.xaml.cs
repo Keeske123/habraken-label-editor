@@ -32,19 +32,21 @@ namespace Habraken_SLE
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {           
-
+        {
             if (user.isLoggedIn)
             {
-                designer.Visibility = Visibility.Collapsed;
-                Logo.Visibility = Visibility.Visible;
-                pb_Login.Visibility = Visibility.Visible;
+                if (MessageBox.Show("Do you really want to log out?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    home.Visibility = Visibility.Collapsed;
+                    logo.Visibility = Visibility.Visible;
+                    pb_Login.Visibility = Visibility.Visible;
 
-                pb_Login.Clear();
+                    pb_Login.Clear();
 
-                user.isLoggedIn = false;
+                    user.isLoggedIn = false;
 
-                imgLogin.Source = new BitmapImage(new Uri(@"\Images\Login.png", UriKind.RelativeOrAbsolute));
+                    imgLogin.Source = new BitmapImage(new Uri(@"\Images\Login.png", UriKind.RelativeOrAbsolute));
+                }
             }
             else
             {
@@ -52,8 +54,8 @@ namespace Habraken_SLE
 
                 if (user.isLoggedIn)
                 {
-                    designer.Visibility = Visibility.Visible;
-                    Logo.Visibility = Visibility.Collapsed;
+                    home.Visibility = Visibility.Visible;
+                    logo.Visibility = Visibility.Collapsed;
                     pb_Login.Visibility = Visibility.Collapsed;
 
                     imgLogin.Source = new BitmapImage(new Uri(@"\Images\Logout.png", UriKind.RelativeOrAbsolute));
@@ -70,7 +72,10 @@ namespace Habraken_SLE
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            if (MessageBox.Show("Close Application?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }

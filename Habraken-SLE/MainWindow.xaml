@@ -10,15 +10,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="608*"></RowDefinition>
+            <RowDefinition Height="900*"></RowDefinition>
             <RowDefinition Height="20*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" x:Name="gridHeader" Background="#FF0017FF" >
+        <Grid Grid.Row="0" x:Name="gridHeader" Background="#FF323764" >
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="637*"/>
-                    <ColumnDefinition Width="878*"/>
-                    <ColumnDefinition Width="397*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid x:Name="gridLogin" Grid.Column="2">
@@ -27,26 +27,23 @@
 
                     <Button x:Name="btnLogin" Margin="297,10,10,10" FontSize="20" Click="btnLogin_Click" Background="Transparent" >
                         <StackPanel>
-                            <Image x:Name="imgLogin" Source="/Images/Login.png" Height="53" Width="83" Stretch="Fill"/>
+                            <Image x:Name="imgLogin" Source="/Images/Login.png" Stretch="Fill"/>
                         </StackPanel>
                     </Button>
                     <PasswordBox x:Name="pb_Login" Margin="42,10,105,10" FontSize="40" PasswordChar="*" />
-
-
-
                 </Grid>
             </Grid>
         </Grid>
 
         <Grid x:Name="gridMain" Grid.Row="1">
-            <myControls:Designer x:Name="designer" Visibility="Hidden" />
-            <myControls:Logo x:Name="Logo" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center" Height="534" Width="1092"  />
+            <myControls:Home x:Name="home"  Visibility="Visible" />
+            <myControls:Logo x:Name="logo" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Height="534" Width="1092"  />
         </Grid>
 
-        <Grid Grid.Row="2" Background="#FF0017FF">
+        <Grid Grid.Row="2" Background="#FF323764">
             <Button x:Name="btnExit" Margin="0,0,1882,0" Background="Transparent" Click="btnExit_Click">
                 <StackPanel>
-                    <Image x:Name="imgExit" Source="/Images/exit.png" Stretch="Fill" Height="28" Width="25"/>
+                    <Image x:Name="imgExit" Source="/Images/exit.png" Stretch="Fill"/>
                 </StackPanel>
             </Button>
         </Grid>

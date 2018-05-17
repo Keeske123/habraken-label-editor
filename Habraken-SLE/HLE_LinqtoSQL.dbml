@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbLabelEditor" Class="HLE_LinqtoSQLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\dbLabelEditor.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="Habraken_SLE.Properties.Settings" SettingsPropertyName="dbLabelEditorConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tbl_barcode" Member="tbl_barcodes">
     <Type Name="tbl_barcode">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -19,7 +18,9 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UserID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="UserProfile" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_userProfile_tbl_User" Member="tbl_userProfile" ThisKey="UserProfileID" OtherKey="Id" Type="tbl_userProfile" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_boxes" Member="tbl_boxes">
@@ -98,6 +99,16 @@
       <Column Name="FontWeight" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Association Name="tbl_textbox_tbl_infoTextbox" Member="tbl_infoTextboxes" ThisKey="Id" OtherKey="TextboxID" Type="tbl_infoTextbox" />
       <Association Name="tbl_label_tbl_textbox" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_userProfiles" Member="tbl_userProfiles">
+    <Type Name="tbl_userProfile">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Userprofile" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CanEdit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CanPrint" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CanSave" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_userProfile_tbl_User" Member="tbl_Users" ThisKey="Id" OtherKey="UserProfileID" Type="tbl_User" />
     </Type>
   </Table>
 </Database>

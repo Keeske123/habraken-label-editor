@@ -57,13 +57,10 @@ namespace Habraken_SLE
     partial void Inserttbl_textbox(tbl_textbox instance);
     partial void Updatetbl_textbox(tbl_textbox instance);
     partial void Deletetbl_textbox(tbl_textbox instance);
+    partial void Inserttbl_userProfile(tbl_userProfile instance);
+    partial void Updatetbl_userProfile(tbl_userProfile instance);
+    partial void Deletetbl_userProfile(tbl_userProfile instance);
     #endregion
-		
-		public HLE_LinqtoSQLDataContext() : 
-				base(global::Habraken_SLE.Properties.Settings.Default.dbLabelEditorConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
 		
 		public HLE_LinqtoSQLDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -158,6 +155,14 @@ namespace Habraken_SLE
 			get
 			{
 				return this.GetTable<tbl_textbox>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_userProfile> tbl_userProfiles
+		{
+			get
+			{
+				return this.GetTable<tbl_userProfile>();
 			}
 		}
 	}
@@ -473,7 +478,11 @@ namespace Habraken_SLE
 		
 		private string _UserID;
 		
-		private string _UserProfile;
+		private System.Nullable<int> _UserProfileID;
+		
+		private bool _IsActive;
+		
+		private EntityRef<tbl_userProfile> _tbl_userProfile;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -485,12 +494,15 @@ namespace Habraken_SLE
     partial void OnUserNameChanged();
     partial void OnUserIDChanging(string value);
     partial void OnUserIDChanged();
-    partial void OnUserProfileChanging(string value);
-    partial void OnUserProfileChanged();
+    partial void OnUserProfileIDChanging(System.Nullable<int> value);
+    partial void OnUserProfileIDChanged();
+    partial void OnIsActiveChanging(bool value);
+    partial void OnIsActiveChanged();
     #endregion
 		
 		public tbl_User()
 		{
+			this._tbl_userProfile = default(EntityRef<tbl_userProfile>);
 			OnCreated();
 		}
 		
@@ -554,22 +566,80 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserProfile", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserProfile
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserProfileID", DbType="Int")]
+		public System.Nullable<int> UserProfileID
 		{
 			get
 			{
-				return this._UserProfile;
+				return this._UserProfileID;
 			}
 			set
 			{
-				if ((this._UserProfile != value))
+				if ((this._UserProfileID != value))
 				{
-					this.OnUserProfileChanging(value);
+					if (this._tbl_userProfile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserProfileIDChanging(value);
 					this.SendPropertyChanging();
-					this._UserProfile = value;
-					this.SendPropertyChanged("UserProfile");
-					this.OnUserProfileChanged();
+					this._UserProfileID = value;
+					this.SendPropertyChanged("UserProfileID");
+					this.OnUserProfileIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		public bool IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_userProfile_tbl_User", Storage="_tbl_userProfile", ThisKey="UserProfileID", OtherKey="Id", IsForeignKey=true)]
+		public tbl_userProfile tbl_userProfile
+		{
+			get
+			{
+				return this._tbl_userProfile.Entity;
+			}
+			set
+			{
+				tbl_userProfile previousValue = this._tbl_userProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_userProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_userProfile.Entity = null;
+						previousValue.tbl_Users.Remove(this);
+					}
+					this._tbl_userProfile.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_Users.Add(this);
+						this._UserProfileID = value.Id;
+					}
+					else
+					{
+						this._UserProfileID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tbl_userProfile");
 				}
 			}
 		}
@@ -2205,6 +2275,192 @@ namespace Habraken_SLE
 		{
 			this.SendPropertyChanging();
 			entity.tbl_textbox = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_userProfiles")]
+	public partial class tbl_userProfile : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Userprofile;
+		
+		private bool _CanEdit;
+		
+		private bool _CanPrint;
+		
+		private bool _CanSave;
+		
+		private EntitySet<tbl_User> _tbl_Users;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUserprofileChanging(string value);
+    partial void OnUserprofileChanged();
+    partial void OnCanEditChanging(bool value);
+    partial void OnCanEditChanged();
+    partial void OnCanPrintChanging(bool value);
+    partial void OnCanPrintChanged();
+    partial void OnCanSaveChanging(bool value);
+    partial void OnCanSaveChanged();
+    #endregion
+		
+		public tbl_userProfile()
+		{
+			this._tbl_Users = new EntitySet<tbl_User>(new Action<tbl_User>(this.attach_tbl_Users), new Action<tbl_User>(this.detach_tbl_Users));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Userprofile", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Userprofile
+		{
+			get
+			{
+				return this._Userprofile;
+			}
+			set
+			{
+				if ((this._Userprofile != value))
+				{
+					this.OnUserprofileChanging(value);
+					this.SendPropertyChanging();
+					this._Userprofile = value;
+					this.SendPropertyChanged("Userprofile");
+					this.OnUserprofileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanEdit", DbType="Bit NOT NULL")]
+		public bool CanEdit
+		{
+			get
+			{
+				return this._CanEdit;
+			}
+			set
+			{
+				if ((this._CanEdit != value))
+				{
+					this.OnCanEditChanging(value);
+					this.SendPropertyChanging();
+					this._CanEdit = value;
+					this.SendPropertyChanged("CanEdit");
+					this.OnCanEditChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanPrint", DbType="Bit NOT NULL")]
+		public bool CanPrint
+		{
+			get
+			{
+				return this._CanPrint;
+			}
+			set
+			{
+				if ((this._CanPrint != value))
+				{
+					this.OnCanPrintChanging(value);
+					this.SendPropertyChanging();
+					this._CanPrint = value;
+					this.SendPropertyChanged("CanPrint");
+					this.OnCanPrintChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanSave", DbType="Bit NOT NULL")]
+		public bool CanSave
+		{
+			get
+			{
+				return this._CanSave;
+			}
+			set
+			{
+				if ((this._CanSave != value))
+				{
+					this.OnCanSaveChanging(value);
+					this.SendPropertyChanging();
+					this._CanSave = value;
+					this.SendPropertyChanged("CanSave");
+					this.OnCanSaveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_userProfile_tbl_User", Storage="_tbl_Users", ThisKey="Id", OtherKey="UserProfileID")]
+		public EntitySet<tbl_User> tbl_Users
+		{
+			get
+			{
+				return this._tbl_Users;
+			}
+			set
+			{
+				this._tbl_Users.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tbl_Users(tbl_User entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_userProfile = this;
+		}
+		
+		private void detach_tbl_Users(tbl_User entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_userProfile = null;
 		}
 	}
 }
