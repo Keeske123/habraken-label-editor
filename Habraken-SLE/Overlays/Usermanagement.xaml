@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Habraken_SLE.Overlays"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1912">
+    
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

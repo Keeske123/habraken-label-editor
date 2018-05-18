@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Habraken_SLE.Overlays"
              mc:Ignorable="d" 
-             d:DesignHeight="608" d:DesignWidth="1912" Background="OldLace">
-    
+             d:DesignHeight="608" d:DesignWidth="1912" Background="WhiteSmoke">
+
     <Grid x:Name="gridMain">
         <Grid x:Name="gridNav">
-            <Button x:Name="btnDesigner" Content="Designer" Height="50"  Click="btnDesigner_Click" Margin="460,251,1352,307"/>
-            <Button x:Name="btnUsermanagement" Content="Usermanagement" Height="50" Click="btnUsermanagement_Click" Margin="1308,251,514,307"/>
+            <Image Source="/Images/Label-Editor-Logo.png" Margin="524,234,1258,270" MouseUp="btnDesigner_Click" />
+            <Image x:Name="btnUsermanagement" Source="/Images/UserManagement.png" MouseUp="btnUsermanagement_Click" Margin="1191,234,613,270"/>
         </Grid>
-        
+
         <Grid x:Name="gridDesigner" Visibility="Hidden">
             <local:Designer/>
         </Grid>
@@ -20,6 +20,6 @@
         <Grid x:Name="gridUsermanagement" Visibility="Hidden">
             <local:Usermanagement/>
         </Grid>
-            
+
     </Grid>
 </UserControl>

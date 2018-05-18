@@ -25,27 +25,22 @@
                     <Label x:Name="lblUserName" Content="username" Margin="0,1,105,26" FontSize="16" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="282" Foreground="White"/>
                     <Label x:Name="lblUserProfile" Content="userProfile" Margin="0,20,105,6" FontStyle="Italic" FontSize="16" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="282" Foreground="White"/>
 
-                    <Button x:Name="btnLogin" Margin="297,1,10,19" FontSize="20" Click="btnLogin_Click" Background="Transparent" >
-                        <StackPanel>
-                            <Image x:Name="imgLogin" Source="/Images/Login.png" Stretch="Fill"/>
-                        </StackPanel>
-                    </Button>
+                    <Image x:Name="imgLogin" Margin="297,1,10,19" Source="/Images/Login.png" MouseUp="btnLogin_Click" >
+                       
+                    </Image>
                     <PasswordBox x:Name="pb_Login" Margin="42,10,105,26" FontSize="40" PasswordChar="*"/>
                 </Grid>
             </Grid>
         </Grid>
 
         <Grid x:Name="gridMain" Grid.Row="1">
-            <myControls:Home x:Name="home"  Visibility="Collapsed" Margin="0,10" />
-            <myControls:Logo x:Name="logo" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center" Height="534" Width="1092"  />
+            <myControls:Home x:Name="home"  Visibility="Visible" Margin="0,10" />
+            <myControls:Logo x:Name="logo" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Height="534" Width="1092"  />
         </Grid>
 
         <Grid Grid.Row="1" Background="#FF323764" Margin="0,987,0,0" Grid.RowSpan="2">
-            <Button x:Name="btnExit" Margin="0,0,1882,0" Background="Transparent" Click="btnExit_Click">
-                <StackPanel>
-                    <Image x:Name="imgExit" Source="/Images/exit.png" Stretch="Fill"/>
-                </StackPanel>
-            </Button>
+            <Image x:Name="btnExit" Margin="1872,0,10,0" Source="/Images/exit.png"  MouseUp="btnExit_Click"/>
+            <Image x:Name="btnHome" Margin="10,0,1872,0" Source="/Images/Home.png" MouseUp="btnHome_MouseUp"/>
         </Grid>
     </Grid>
 </Window>

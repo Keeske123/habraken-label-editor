@@ -77,5 +77,12 @@ namespace Habraken_SLE
                 Application.Current.Shutdown();
             }
         }
+
+        private void btnHome_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            home.gridUsermanagement.Visibility = Visibility.Collapsed;
+            home.gridDesigner.Visibility = Visibility.Collapsed;
+            home.gridNav.Visibility = Visibility.Visible;
+        }
     }
 }
