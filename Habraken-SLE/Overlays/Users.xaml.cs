@@ -17,7 +17,7 @@ namespace Habraken_SLE.Overlays
 {
     public partial class Users : UserControl
     {
-        User user;
+        //Usermanagement usermanagement;
         //HLE_LinqtoSQLDataContext db;
         string con;
 
@@ -35,18 +35,22 @@ namespace Habraken_SLE.Overlays
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
+            
             LoadUsersToListView();
             if (tbSearch.Text != "" || tbSearch.Text != null)
             {
-                IEnumerable<ListViewItem> lv = lvUsers.Items.Cast<ListViewItem>();
+                IEnumerable<string> lv = lvUsers.Items.Cast<string>();
 
                 var query = from q in lv
-                            where q.ToString().Contains(tbSearch.Text)
+                            where q.ToLower().Split(',')[0].Contains(tbSearch.Text.ToLower())
                             select q;
+
+                string[] results = query.ToArray();
 
                 lvUsers.Items.Clear();
 
-                foreach (var item in query)
+
+                foreach (var item in results)
                 {
                     lvUsers.Items.Add(String.Format(item.ToString()));
                 }
@@ -55,11 +59,6 @@ namespace Habraken_SLE.Overlays
             {
                 LoadUsersToListView();
             }
-        }
-
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         public void LoadProfiles()
@@ -99,6 +98,7 @@ namespace Habraken_SLE.Overlays
                 query.IsActive = checkActive.IsChecked.Value;
 
                 db.SubmitChanges();
+                Resetvalues();
             }
             catch
             {
@@ -107,6 +107,31 @@ namespace Habraken_SLE.Overlays
             finally
             {
                 LoadUsersToListView();
+            }
+        }
+        
+        public void DeleteUser(string username)
+        {
+            var db = new HLE_LinqtoSQLDataContext(con);
+
+            var query = from q in db.tbl_Users
+                        where q.UserName == username
+                        select q;
+
+            foreach (var item in query)
+            {
+                db.tbl_Users.DeleteOnSubmit(item);
+            }
+
+            try
+            {
+                db.SubmitChanges();
+                LoadUsersToListView();
+                Resetvalues();
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong while Deleting User");
             }
         }
 
@@ -138,37 +163,18 @@ namespace Habraken_SLE.Overlays
             }
         }
 
-        public void DeleteUser(string username)
+        public void CancelAddEditUser()
         {
-            var db = new HLE_LinqtoSQLDataContext(con);
-
-            var query = from q in db.tbl_Users
-                        where q.UserName == username
-                        select q;
-
-            foreach (var item in query)
-            {
-                db.tbl_Users.DeleteOnSubmit(item);
-            }
-
-            try
-            {
-                db.SubmitChanges();
-                LoadUsersToListView();
-            }
-            catch
-            {
-                MessageBox.Show("Something went wrong while Deleting User");
-            }
+            Resetvalues();           
         }
 
-        internal void CancelAddEditUser()
+        private void Resetvalues()
         {
             tbName.Clear();
             tbOperatortag.Clear();
             cbRights.Text = "";
             checkActive.IsChecked = false;
-            gbAddEditUsers.IsEnabled = false;
+            gbAddEditUsers.IsEnabled = false;            
         }
 
         private void LoadUsersToListView()
@@ -215,7 +221,7 @@ namespace Habraken_SLE.Overlays
             tbOperatortag.Text = query.UserID;
             tbName.Text = query.UserName;
             cbRights.SelectedItem = query.tbl_userProfile.Userprofile;
-            checkActive.IsChecked = query.IsActive;
+            checkActive.IsChecked = query.IsActive;           
         }
 
         private int GetUserProfileID()
@@ -242,6 +248,7 @@ namespace Habraken_SLE.Overlays
             }
 
             return result;
-        }        
+        }
+
     }
 }

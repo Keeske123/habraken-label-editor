@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Habraken_SLE.Overlays"
              mc:Ignorable="d" 
-              d:DesignHeight="824" d:DesignWidth="1200" Background="Transparent" BorderBrush="Transparent">
+              d:DesignHeight="725" d:DesignWidth="1200" Background="Transparent" BorderBrush="Transparent">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="725*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="600*"/>
@@ -24,17 +24,17 @@
             <GroupBox Grid.Row="0" Header="Search">
                 <Grid>
                     <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="35" Margin="111,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="408"  TextChanged="tbSearch_TextChanged"/>
-                    <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="524,10,0,0" VerticalAlignment="Top" Width="76" Click="btnSearch_Click" />
 
                 </Grid>
             </GroupBox>
             <GroupBox x:Name="gbViewUsers" Grid.Row="1" Header="View Users" Height="Auto" HorizontalAlignment="Right" Width="725" Margin="0,0,0,10" Grid.RowSpan="2">
                 <Grid Margin="0,0,0,-12">
 
-                    <ListView x:Name="lvUsers" >                        
+                    <ListView x:Name="lvUsers" >
                         <ListView.ItemContainerStyle>
-                            
-                            <Style TargetType="ListBoxItem" >                                
+
+                            <Style TargetType="ListViewItem" >
+                                
                                 <Setter Property="Cursor" Value="Hand"/>
                                 <Setter Property="Background" Value="AliceBlue" />
                                 <Setter Property="BorderBrush" Value="LightGray" />
@@ -44,8 +44,9 @@
                                         <Setter Property="Background" Value="LightGray" />
                                     </Trigger>
                                 </Style.Triggers>
+
                             </Style>
-                            
+
 
                         </ListView.ItemContainerStyle>
                     </ListView>

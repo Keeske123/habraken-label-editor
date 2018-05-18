@@ -72,7 +72,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="btnEdit" Grid.Column="1" Content="Edit" Margin="10" Click="btnEdit_Click" IsEnabled="False" >
+                <Button x:Name="btnEdit" Grid.Column="1" Content="Edit" Margin="10" Click="btnEdit_Click" >
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#B9E6FF"/>
@@ -116,7 +116,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="btnDelete" Grid.Column="2" Content="Delete" Margin="10" Click="btnDelete_Click" IsEnabled="False" >
+                <Button x:Name="btnDelete" Grid.Column="2" Content="Delete" Margin="10" Click="btnDelete_Click" >
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#B9E6FF"/>
