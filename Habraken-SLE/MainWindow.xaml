@@ -39,7 +39,9 @@
         </Grid>
 
         <Grid Grid.Row="1" Background="#FF323764" Margin="0,987,0,0" Grid.RowSpan="2">
-            <Image x:Name="btnExit" Margin="1872,0,10,0" Source="/Images/exit.png"  MouseUp="btnExit_Click"/>
+            <Image x:Name="btnExit" Margin="1872,0,10,0" Source="/Images/exit.png"  MouseUp="btnExit_Click">
+                
+            </Image>
             <Image x:Name="btnHome" Margin="10,0,1872,0" Source="/Images/Home.png" MouseUp="btnHome_MouseUp"/>
         </Grid>
     </Grid>

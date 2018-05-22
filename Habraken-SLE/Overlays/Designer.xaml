@@ -8,5 +8,7 @@
              d:DesignHeight="608" d:DesignWidth="1912">
     <Grid Background="WhiteSmoke">
         <local:Toolbox x:Name="ucToolbox" Margin="76,54,1637,0" VerticalAlignment="Top" Height="213"/>
+        <local:ElementVarialbes x:Name="ucVariables" Margin="630,97,682,111"/>
+        <Button x:Name="btnVariables" Margin="1620,502,162,52" Click="btnVariables_Click">Insert Variables</Button>
     </Grid>
 </UserControl>

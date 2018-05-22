@@ -9,8 +9,38 @@
 
     <Grid x:Name="gridMain">
         <Grid x:Name="gridNav">
-            <Image Source="/Images/Label-Editor-Logo.png" Margin="524,234,1258,270" MouseUp="btnDesigner_Click" />
-            <Image x:Name="btnUsermanagement" Source="/Images/UserManagement.png" MouseUp="btnUsermanagement_Click" Margin="1191,234,613,270"/>
+            <Image Source="/Images/Label-Editor-Logo.png" Margin="524,234,1258,270" MouseUp="btnDesigner_Click">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Margin" Value="20,20,10,10" />
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="3" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image x:Name="btnUsermanagement" Source="/Images/UserManagement.png" MouseUp="btnUsermanagement_Click" Margin="1191,234,613,270">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Margin" Value="20,20,10,10" />
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="3" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
         </Grid>
 
         <Grid x:Name="gridDesigner" Visibility="Hidden">

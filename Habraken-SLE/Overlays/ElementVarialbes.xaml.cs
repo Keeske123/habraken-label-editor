@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Habraken_SLE.Overlays
 {
     /// <summary>
-    /// Interaction logic for Designer.xaml
+    /// Interaction logic for ElementVarialbes.xaml
     /// </summary>
-    public partial class Designer : UserControl
+    public partial class ElementVarialbes : UserControl
     {
-        public Designer()
+        public ElementVarialbes()
         {
             InitializeComponent();
-        }
-
-        private void btnVariables_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

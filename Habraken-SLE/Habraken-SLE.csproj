@@ -102,6 +102,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Overlays\ElementVarialbes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Overlays\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +130,9 @@
   <ItemGroup>
     <Compile Include="Overlays\Designer.xaml.cs">
       <DependentUpon>Designer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Overlays\ElementVarialbes.xaml.cs">
+      <DependentUpon>ElementVarialbes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Overlays\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>

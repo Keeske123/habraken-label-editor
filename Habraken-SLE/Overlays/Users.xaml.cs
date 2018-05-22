@@ -19,9 +19,9 @@ namespace Habraken_SLE.Overlays
     {
         //Usermanagement usermanagement;
         //HLE_LinqtoSQLDataContext db;
-        string con;
+        public string con;
 
-        public Users()
+        public Users(ref Button button)
         {
             con = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\AFSTUDEER STAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\Periode 11-12\Habraken\Habraken-SLE\dbLabelEditor.mdf;Integrated Security=True";
 
@@ -29,7 +29,7 @@ namespace Habraken_SLE.Overlays
 
             LoadUsersToListView();
             LoadProfiles();
-
+            button.vi
            // db = new HLE_LinqtoSQLDataContext(con);
         }
 

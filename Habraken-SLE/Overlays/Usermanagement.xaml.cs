@@ -20,11 +20,14 @@ namespace Habraken_SLE.Overlays
     /// </summary>
     public partial class Usermanagement : UserControl
     {
+        Users user;
         string action;
 
         public Usermanagement()
         {
             InitializeComponent();
+
+            user = new Users(ref btnCancel);
 
         }
 
@@ -160,7 +163,7 @@ namespace Habraken_SLE.Overlays
             {
                 action = "";
 
-                ucUsers.CancelAddEditUser();
+                user.CancelAddEditUser();              
 
                 btnNew.IsEnabled = true;
                 btnEdit.IsEnabled = true;
