@@ -90,6 +90,10 @@ namespace Habraken_SLE.Overlays
                     db.SubmitChanges();
                 }
             }
+            lvInfoFields.Items.Clear();
+            cbInfoFields.Items.Clear();
+            cbItems.Items.Clear();
+            this.Visibility = Visibility.Hidden;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
