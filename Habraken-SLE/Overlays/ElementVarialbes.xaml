@@ -4,20 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Habraken_SLE.Overlays"
-             mc:Ignorable="d" Background="WhiteSmoke" Width="600" Height="400">
+             mc:Ignorable="d" Background="WhiteSmoke" Width="444" Height="400">
     <Border BorderBrush="Black" BorderThickness="1">
         <Grid>
-            <ComboBox x:Name="cbItems" Margin="10,10,402,366"/>
+            <ComboBox x:Name="cbItems" Margin="10,10,246,366" SelectionChanged="cbItems_SelectionChanged"/>
             <GroupBox Header="Variales" HorizontalAlignment="Left" Height="351" Margin="10,39,0,0" VerticalAlignment="Top" Width="186">
                 <Grid Margin="0,0,-2,-12">
-                    <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="93,62,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.667,-3.5"/>
+                    <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="93,62,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.667,-3.5" Click="btnAdd_Click"/>
                     <TextBox x:Name="tbInfoCharLengths" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" Text="CharLengths" VerticalAlignment="Top" Width="158"/>
                     <ComboBox x:Name="cbInfoFields" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="156"/>
                 </Grid>
             </GroupBox>
-            <ListView x:Name="lvInfoFields" HorizontalAlignment="Left" Height="325" Margin="201,39,0,0" VerticalAlignment="Top" Width="233"/>
-            <Button Content="Save" HorizontalAlignment="Left" Margin="513,368,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Cancel" HorizontalAlignment="Left" Margin="359,368,0,0" VerticalAlignment="Top" Width="75"/>
+            <ListView x:Name="lvInfoFields" HorizontalAlignment="Left" Height="325" Margin="201,39,0,0" VerticalAlignment="Top" Width="231"/>
+            <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="357,368,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click" />
+            <Button Content="Cancel" HorizontalAlignment="Left" Margin="201,368,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.653,0.25"/>
         </Grid>
     </Border>
 </UserControl>

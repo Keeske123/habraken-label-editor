@@ -32,9 +32,7 @@
 
                     <ListView x:Name="lvUsers" >
                         <ListView.ItemContainerStyle>
-
                             <Style TargetType="ListViewItem" >
-                                
                                 <Setter Property="Cursor" Value="Hand"/>
                                 <Setter Property="Background" Value="AliceBlue" />
                                 <Setter Property="BorderBrush" Value="LightGray" />

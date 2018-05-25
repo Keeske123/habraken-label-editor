@@ -49,9 +49,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Spire.Barcode, Version=2.3.0.11040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Barcode.2.3\lib\net40\Spire.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Barcode.2.3\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,12 +77,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\Elements\Box.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\Designer\DragDrop.cs" />
-    <Compile Include="Classes\Elements\Line.cs" />
-    <Compile Include="Classes\Elements\Textbox.cs" />
     <Compile Include="Classes\Designer\Toolbox.cs" />
+    <Compile Include="Classes\Elements\Barcode.cs" />
+    <Compile Include="Classes\Elements\Textbox.cs" />
     <Compile Include="Classes\User.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -85,10 +91,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Elements\Barcode.cs" />
     <Compile Include="Classes\Designer\Designer.cs" />
-    <Compile Include="Classes\Elements\Element.cs" />
     <Compile Include="Classes\Label\Label.cs" />
+    <Compile Include="DragCanvas.cs" />
     <Compile Include="HLE_LinqtoSQL.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -175,6 +180,7 @@
       <DependentUpon>HLE_LinqtoSQL.dbml</DependentUpon>
     </None>
     <None Include="KlassenDiagramHabraken.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

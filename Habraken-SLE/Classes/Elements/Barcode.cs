@@ -2,48 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Habraken_SLE
+namespace Habraken_SLE.Classes.Elements
 {
-    public class Barcode : Element
+    class Barcode
     {
-        public Barcode()
-        {
-        }
+        public double LabelID { get; set; }
+        public double posX { get; set; }
+        public int posY { get; set; }
+        public int height { get; set; }
+        public int width { get; set; }
+        public int informationFieldID { get; set; }
+        public int numCharPos { get; set; }
 
-        public int font
-        {
-            get;
-            set;
-        }
 
-        public string ratio
-        {
-            get;
-            set;
-        }
-
-        public int type
-        {
-            get;
-            set;
-        }
-
-        public int code
-        {
-            get;
-            set;
-        }
-
-        public Toolbox Toolbox
-        {
-            get;
-            set;
-        }
-
-        public void GenereateBarcode()
-        {
-            throw new System.NotImplementedException();
-        }
+        
+        
     }
 }

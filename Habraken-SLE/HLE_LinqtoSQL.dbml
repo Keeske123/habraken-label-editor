@@ -3,12 +3,13 @@
     <Type Name="tbl_barcode">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PosX" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Thickness" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Ratio" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Thickness" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ratio" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="tbl_barcode_tbl_infoBarcode" Member="tbl_infoBarcodes" ThisKey="Id" OtherKey="BarcodeID" Type="tbl_infoBarcode" />
       <Association Name="tbl_label_tbl_barcode" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
     </Type>
@@ -27,9 +28,10 @@
     <Type Name="tbl_box">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Thickness" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Thickness" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PosX" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Heigth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="tbl_label_tbl_box" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
@@ -80,9 +82,10 @@
     <Type Name="tbl_line">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Thickness" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PosX" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Thickness" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="tbl_label_tbl_line" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
     </Type>
   </Table>
@@ -90,13 +93,14 @@
     <Type Name="tbl_textbox">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="LabelID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PosX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PosY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PosX" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PosY" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Fonttype" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Fontsize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FontWeight" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Fonttype" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fontsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FontWeight" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Association Name="tbl_textbox_tbl_infoTextbox" Member="tbl_infoTextboxes" ThisKey="Id" OtherKey="TextboxID" Type="tbl_infoTextbox" />
       <Association Name="tbl_label_tbl_textbox" Member="tbl_label" ThisKey="LabelID" OtherKey="Id" Type="tbl_label" IsForeignKey="true" />
     </Type>

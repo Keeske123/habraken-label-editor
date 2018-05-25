@@ -34,7 +34,7 @@
         </Grid>
 
         <Grid x:Name="gridMain" Grid.Row="1">
-            <myControls:Home x:Name="home"  Visibility="Visible" Margin="0,10" />
+            <myControls:Home x:Name="home"  Visibility="Visible" Margin="0,10,0,0" />
             <myControls:Logo x:Name="logo" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Height="534" Width="1092"  />
         </Grid>
 

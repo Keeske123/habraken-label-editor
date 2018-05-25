@@ -62,6 +62,17 @@ namespace Habraken_SLE
 
                     lblUserName.Content = user.currentUser;
                     lblUserProfile.Content = user.currentProfile;
+
+                    if (!user.canEdit)
+                    {
+                        home.btnDesigner.Visibility = Visibility.Hidden;
+                        home.btnUsermanagement.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        home.btnDesigner.Visibility = Visibility.Visible;
+                        home.btnUsermanagement.Visibility = Visibility.Visible;
+                    }
                 }
                 else
                 {

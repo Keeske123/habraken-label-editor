@@ -177,15 +177,17 @@ namespace Habraken_SLE
 		
 		private int _LabelID;
 		
-		private int _PosX;
+		private string _Name;
 		
-		private int _PosY;
+		private double _PosX;
+		
+		private double _PosY;
 		
 		private int _Height;
 		
 		private int _Width;
 		
-		private int _Thickness;
+		private System.Nullable<int> _Thickness;
 		
 		private string _Ratio;
 		
@@ -201,15 +203,17 @@ namespace Habraken_SLE
     partial void OnIdChanged();
     partial void OnLabelIDChanging(int value);
     partial void OnLabelIDChanged();
-    partial void OnPosXChanging(int value);
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnPosXChanging(double value);
     partial void OnPosXChanged();
-    partial void OnPosYChanging(int value);
+    partial void OnPosYChanging(double value);
     partial void OnPosYChanged();
     partial void OnHeightChanging(int value);
     partial void OnHeightChanged();
     partial void OnWidthChanging(int value);
     partial void OnWidthChanged();
-    partial void OnThicknessChanging(int value);
+    partial void OnThicknessChanging(System.Nullable<int> value);
     partial void OnThicknessChanged();
     partial void OnRatioChanging(string value);
     partial void OnRatioChanged();
@@ -266,8 +270,28 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosX", DbType="Int NOT NULL")]
-		public int PosX
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosX", DbType="Float NOT NULL")]
+		public double PosX
 		{
 			get
 			{
@@ -286,8 +310,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosY", DbType="Int NOT NULL")]
-		public int PosY
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosY", DbType="Float NOT NULL")]
+		public double PosY
 		{
 			get
 			{
@@ -346,8 +370,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thickness", DbType="Int NOT NULL")]
-		public int Thickness
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thickness", DbType="Int")]
+		public System.Nullable<int> Thickness
 		{
 			get
 			{
@@ -366,7 +390,7 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ratio", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ratio", DbType="VarChar(50)")]
 		public string Ratio
 		{
 			get
@@ -675,11 +699,13 @@ namespace Habraken_SLE
 		
 		private int _LabelID;
 		
-		private int _Thickness;
+		private string _Name;
 		
-		private int _PosX;
+		private System.Nullable<int> _Thickness;
 		
-		private int _PosY;
+		private double _PosX;
+		
+		private double _PosY;
 		
 		private int _Heigth;
 		
@@ -695,11 +721,13 @@ namespace Habraken_SLE
     partial void OnIdChanged();
     partial void OnLabelIDChanging(int value);
     partial void OnLabelIDChanged();
-    partial void OnThicknessChanging(int value);
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnThicknessChanging(System.Nullable<int> value);
     partial void OnThicknessChanged();
-    partial void OnPosXChanging(int value);
+    partial void OnPosXChanging(double value);
     partial void OnPosXChanged();
-    partial void OnPosYChanging(int value);
+    partial void OnPosYChanging(double value);
     partial void OnPosYChanged();
     partial void OnHeigthChanging(int value);
     partial void OnHeigthChanged();
@@ -757,8 +785,28 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thickness", DbType="Int NOT NULL")]
-		public int Thickness
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thickness", DbType="Int")]
+		public System.Nullable<int> Thickness
 		{
 			get
 			{
@@ -777,8 +825,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosX", DbType="Int NOT NULL")]
-		public int PosX
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosX", DbType="Float NOT NULL")]
+		public double PosX
 		{
 			get
 			{
@@ -797,8 +845,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosY", DbType="Int NOT NULL")]
-		public int PosY
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosY", DbType="Float NOT NULL")]
+		public double PosY
 		{
 			get
 			{
@@ -1766,11 +1814,13 @@ namespace Habraken_SLE
 		
 		private int _LabelID;
 		
-		private int _PosX;
+		private string _Name;
 		
-		private int _PosY;
+		private double _PosX;
 		
-		private int _Thickness;
+		private double _PosY;
+		
+		private System.Nullable<int> _Thickness;
 		
 		private EntityRef<tbl_label> _tbl_label;
 		
@@ -1782,11 +1832,13 @@ namespace Habraken_SLE
     partial void OnIdChanged();
     partial void OnLabelIDChanging(int value);
     partial void OnLabelIDChanged();
-    partial void OnPosXChanging(int value);
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnPosXChanging(double value);
     partial void OnPosXChanged();
-    partial void OnPosYChanging(int value);
+    partial void OnPosYChanging(double value);
     partial void OnPosYChanged();
-    partial void OnThicknessChanging(int value);
+    partial void OnThicknessChanging(System.Nullable<int> value);
     partial void OnThicknessChanged();
     #endregion
 		
@@ -1840,8 +1892,28 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosX", DbType="Int NOT NULL")]
-		public int PosX
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosX", DbType="Float NOT NULL")]
+		public double PosX
 		{
 			get
 			{
@@ -1860,8 +1932,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosY", DbType="Int NOT NULL")]
-		public int PosY
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosY", DbType="Float NOT NULL")]
+		public double PosY
 		{
 			get
 			{
@@ -1880,8 +1952,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thickness", DbType="Int NOT NULL")]
-		public int Thickness
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thickness", DbType="Int")]
+		public System.Nullable<int> Thickness
 		{
 			get
 			{
@@ -1965,9 +2037,11 @@ namespace Habraken_SLE
 		
 		private int _LabelID;
 		
-		private int _PosX;
+		private string _Name;
 		
-		private int _PosY;
+		private double _PosX;
+		
+		private double _PosY;
 		
 		private int _Height;
 		
@@ -1975,7 +2049,7 @@ namespace Habraken_SLE
 		
 		private string _Fonttype;
 		
-		private int _Fontsize;
+		private System.Nullable<int> _Fontsize;
 		
 		private string _FontWeight;
 		
@@ -1991,9 +2065,11 @@ namespace Habraken_SLE
     partial void OnIdChanged();
     partial void OnLabelIDChanging(int value);
     partial void OnLabelIDChanged();
-    partial void OnPosXChanging(int value);
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnPosXChanging(double value);
     partial void OnPosXChanged();
-    partial void OnPosYChanging(int value);
+    partial void OnPosYChanging(double value);
     partial void OnPosYChanged();
     partial void OnHeightChanging(int value);
     partial void OnHeightChanged();
@@ -2001,7 +2077,7 @@ namespace Habraken_SLE
     partial void OnWidthChanged();
     partial void OnFonttypeChanging(string value);
     partial void OnFonttypeChanged();
-    partial void OnFontsizeChanging(int value);
+    partial void OnFontsizeChanging(System.Nullable<int> value);
     partial void OnFontsizeChanged();
     partial void OnFontWeightChanging(string value);
     partial void OnFontWeightChanged();
@@ -2058,8 +2134,28 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosX", DbType="Int NOT NULL")]
-		public int PosX
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosX", DbType="Float NOT NULL")]
+		public double PosX
 		{
 			get
 			{
@@ -2078,8 +2174,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosY", DbType="Int NOT NULL")]
-		public int PosY
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PosY", DbType="Float NOT NULL")]
+		public double PosY
 		{
 			get
 			{
@@ -2138,7 +2234,7 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fonttype", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fonttype", DbType="VarChar(MAX)")]
 		public string Fonttype
 		{
 			get
@@ -2158,8 +2254,8 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fontsize", DbType="Int NOT NULL")]
-		public int Fontsize
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fontsize", DbType="Int")]
+		public System.Nullable<int> Fontsize
 		{
 			get
 			{
@@ -2178,7 +2274,7 @@ namespace Habraken_SLE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FontWeight", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FontWeight", DbType="VarChar(20)")]
 		public string FontWeight
 		{
 			get

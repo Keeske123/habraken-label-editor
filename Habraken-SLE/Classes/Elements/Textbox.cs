@@ -2,37 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Habraken_SLE
+namespace Habraken_SLE.Classes.Elements
 {
-    public class Textbox : Element
+    class Textbox
     {
-        public Textbox()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public string fontType
-        {
-            get;set;
-        }
-
-        public int fontSize
-        {
-            get; set;
-
-        }
-
-        public string fontWeight
-        {
-            get; set;
-
-        }
-
-        public Toolbox Toolbox
-        {
-            get; set;
-
-        }
+        public int LabelID { get; set; }
+        public int posX { get; set; }
+        public int posY { get; set; }
+        public int height { get; set; }
+        public int width { get; set; }
+        public int informationFieldID { get; set; }
+        public int numCharPos { get; set; }
     }
 }

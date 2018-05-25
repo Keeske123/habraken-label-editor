@@ -9,7 +9,7 @@
 
     <Grid x:Name="gridMain">
         <Grid x:Name="gridNav">
-            <Image Source="/Images/Label-Editor-Logo.png" Margin="524,234,1258,270" MouseUp="btnDesigner_Click">
+            <Image x:Name="btnDesigner" Source="/Images/Label-Editor-Logo.png" Margin="524,234,1258,270" MouseUp="btnDesigner_Click">
                 <Image.Style>
                     <Style TargetType="Image">
                         <Style.Triggers>
