@@ -34,7 +34,7 @@ namespace Habraken_SLE.Overlays
         public Rectangle box, bTemp;
         private string elementBeingDragged;
         private int boxIndex, lineIndex, textboxIndex, barcodeIndex;
-        private bool firstClick, firstGenerate, finishedAddingComboBoxItems;
+        private bool firstClick, firstGenerate, finishedAddingComboBoxItems, activeElement;
 
         List<TextBox> tbList = new List<TextBox>();
         List<Image> barcodeList = new List<Image>();
@@ -55,86 +55,117 @@ namespace Habraken_SLE.Overlays
 
         private void liBarcode_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-            // Generate the barcode
-            if (firstGenerate == false)
+            if (!activeElement)
             {
-                BarcodeSettings bs = new BarcodeSettings();
-                bs.Type = BarCodeType.Code128;
-                bs.Data = "placeholder";
-                BarCodeGenerator bg = new BarCodeGenerator(bs);
-                bg.GenerateImage().Save("code128.png");
+                // Generate the barcode
+                if (firstGenerate == false)
+                {
+                    BarcodeSettings bs = new BarcodeSettings();
+                    bs.Type = BarCodeType.Code128;
+                    bs.Data = "placeholder";
+                    BarCodeGenerator bg = new BarCodeGenerator(bs);
+                    bg.GenerateImage().Save("code128.png");
+                }
+
+                barcode = new Image();
+                barcode.Margin = new Thickness(0, 0, 157, 0);
+                barcode.Width = 100;
+                barcode.Height = 50;
+                barcode.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
+
+                string filePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "code128.png");
+                BitmapImage barcode_ = new BitmapImage();
+                barcode_.BeginInit();
+                barcode_.UriSource = new Uri(filePath);
+                barcode_.EndInit();
+                barcode.Source = barcode_;
+                barcode.Name = "barcode_" + barcodeIndex;
+                elementBeingDragged = "barcode";
+                canvas_.Children.Add(barcode);
+                barcodeIndex++;
+                firstGenerate = true;
+                activeElement = true;
             }
-
-            barcode = new Image();
-            barcode.Margin = new Thickness(0, 0, 157, 0);
-            barcode.Width = 100;
-            barcode.Height = 50;
-            barcode.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
-
-            string filePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "code128.png");
-            BitmapImage barcode_ = new BitmapImage();
-            barcode_.BeginInit();
-            barcode_.UriSource = new Uri(filePath);
-            barcode_.EndInit();
-            barcode.Source = barcode_;
-            barcode.Name = "barcode_" + barcodeIndex;
-            elementBeingDragged = "barcode";
-            canvas_.Children.Add(barcode);
-            barcodeIndex++;
-            firstGenerate = true;
+            else
+            {
+                MessageBox.Show("Element is already Active");
+            }
         } // Generate New Barcode
 
         private void liLine_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            line = new Line();
-            line.X1 = 50;
-            line.Y1 = 50;
-            line.X2 = 0;
-            line.Y2 = 0;
-            line.StrokeThickness = 5;
-            line.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
-            SolidColorBrush colorBlack = new SolidColorBrush();
-            colorBlack.Color = Colors.Black;
-            line.Stroke = colorBlack;
-            line.Name = "line_" + lineIndex;
-            elementBeingDragged = "line";
-            canvas_.Children.Add(line);
-            lineIndex++;
+            if (!activeElement)
+            {
+                line = new Line();
+                line.X1 = 50;
+                line.Y1 = 50;
+                line.X2 = 0;
+                line.Y2 = 0;
+                line.StrokeThickness = 5;
+                line.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
+                SolidColorBrush colorBlack = new SolidColorBrush();
+                colorBlack.Color = Colors.Black;
+                line.Stroke = colorBlack;
+                line.Name = "line_" + lineIndex;
+                elementBeingDragged = "line";
+                canvas_.Children.Add(line);
+                lineIndex++;
+                activeElement = true;
+            }
+            else
+            {
+                MessageBox.Show("Element is already Active");
+            }
         } // Generate New Line     
 
         private void liTextbox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            textbox = new TextBox();
-            textbox.Width = 100;
-            textbox.Height = 25;
-            textbox.Margin = new Thickness(0, 0, 149, 0);
-            textbox.Text = "textbox_" + textboxIndex;
-            textbox.Name = "textbox_" + textboxIndex;
-            textbox.IsReadOnly = true;
-            textbox.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
-            elementBeingDragged = "textbox";
-            canvas_.Children.Add(textbox);
-            textboxIndex++;
+            if (!activeElement)
+            {
+                textbox = new TextBox();
+                textbox.Width = 100;
+                textbox.Height = 25;
+                textbox.Margin = new Thickness(0, 0, 149, 0);
+                textbox.Text = "textbox_" + textboxIndex;
+                textbox.Name = "textbox_" + textboxIndex;
+                textbox.IsReadOnly = true;
+                textbox.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
+                elementBeingDragged = "textbox";
+                canvas_.Children.Add(textbox);
+                textboxIndex++;
+                activeElement = true;
+            }
+            else
+            {
+                MessageBox.Show("Element is already Active");
+            }
 
         }// Generate New Textbox
 
         private void liBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            box = new Rectangle();
-            box.Height = 25;
-            box.Width = 60;
-            box.RadiusY = 5;
-            box.RadiusX = 5;
-            box.StrokeThickness = 5;
-            box.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
-            SolidColorBrush colorBlack = new SolidColorBrush();
-            colorBlack.Color = Colors.Black;
-            box.Stroke = colorBlack;
-            elementBeingDragged = "box";
-            box.Name = "_box_" + boxIndex;
-            canvas_.Children.Add(box);
-            boxIndex++;
+            if (!activeElement)
+            {
+                box = new Rectangle();
+                box.Height = 25;
+                box.Width = 60;
+                box.RadiusY = 5;
+                box.RadiusX = 5;
+                box.StrokeThickness = 5;
+                box.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
+                SolidColorBrush colorBlack = new SolidColorBrush();
+                colorBlack.Color = Colors.Black;
+                box.Stroke = colorBlack;
+                elementBeingDragged = "box";
+                box.Name = "_box_" + boxIndex;
+                canvas_.Children.Add(box);
+                boxIndex++;
+                activeElement = true;
+            }
+            else
+            {
+                MessageBox.Show("Element is already Active");
+            }
         } // Generate New Box
 
         private void gr_preview_MouseEnter(object sender, MouseEventArgs e)
@@ -216,6 +247,7 @@ namespace Habraken_SLE.Overlays
                     elementBeingDragged = "";
                     UpdateComboBox();
                 }
+                activeElement = false;
             }
         } // Handle Element Drop On Preview Grid
 
@@ -859,7 +891,6 @@ namespace Habraken_SLE.Overlays
                         if (lineList.Any())
                         {
                             SelectLine();
-
                         }
 
                         if (boxList.Any())
@@ -893,18 +924,12 @@ namespace Habraken_SLE.Overlays
                         if (lineList.Any())
                         {
                             SelectLine();
-
                         }
 
                         if (boxList.Any())
                         {
                             SelectBox();
                         }
-
-                        ucElementsVariables.SetCurrentLabel(tbLabelName.Text);
-                        ucElementsVariables.LoadElements();
-                        ucElementsVariables.LoadInfoFields();
-                        ucElementsVariables.Visibility = Visibility.Visible;
                     }
                 }
                 catch (Exception ex)
@@ -913,6 +938,10 @@ namespace Habraken_SLE.Overlays
                 }
                 finally
                 {
+                    ucElementsVariables.SetCurrentLabel(tbLabelName.Text);
+                    ucElementsVariables.LoadElements();
+                    ucElementsVariables.LoadInfoFields();
+                    ucElementsVariables.Visibility = Visibility.Visible;
                     UpdateListview();
                 }
             }

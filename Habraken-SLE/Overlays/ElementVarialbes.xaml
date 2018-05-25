@@ -7,7 +7,7 @@
              mc:Ignorable="d" Background="WhiteSmoke" Width="444" Height="400">
     <Border BorderBrush="Black" BorderThickness="1">
         <Grid>
-            <ComboBox x:Name="cbItems" Margin="10,10,246,366" SelectionChanged="cbItems_SelectionChanged"/>
+            <ComboBox x:Name="cbItems" Margin="10,10,246,366"/>
             <GroupBox Header="Variales" HorizontalAlignment="Left" Height="351" Margin="10,39,0,0" VerticalAlignment="Top" Width="186">
                 <Grid Margin="0,0,-2,-12">
                     <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="93,62,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.667,-3.5" Click="btnAdd_Click"/>

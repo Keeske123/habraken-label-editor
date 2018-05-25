@@ -32,7 +32,6 @@ namespace Habraken_SLE.Overlays
         public ElementVarialbes()
         {
             InitializeComponent();
-
         }
 
 
@@ -52,15 +51,16 @@ namespace Habraken_SLE.Overlays
                                         where b.LabelID == getLabelID && b.Name == item.ToString().Split(',')[0]
                                         select b.Id).FirstOrDefault();
 
-                    var query =
-                        (from information in db.tbl_InformationFields
-                         where information.InformationName == item.ToString().Split(',')[1]
-                         select information.Id).FirstOrDefault();
+                    var query = (from information in db.tbl_InformationFields
+                                 where information.InformationName == item.ToString().Split(',')[1]
+                                 select information).FirstOrDefault();
+
+                    MessageBox.Show(item.ToString().Split(',')[1]);
 
                     tbl_infoBarcode barcode = new tbl_infoBarcode
                     {
                         BarcodeID = getBarcodeID,
-                        InformationID = query,
+                        InformationID = int.Parse(item.ToString().Split(',')[2]),
                         NumCharPos = int.Parse(item.ToString().Split(',')[3])
                     };
 
@@ -74,15 +74,14 @@ namespace Habraken_SLE.Overlays
                                         where t.LabelID == getLabelID && t.Name == item.ToString().Split(',')[0]
                                         select t.Id).FirstOrDefault();
 
-                    var query =
-                        (from information in db.tbl_InformationFields
-                         where information.InformationName == item.ToString().Split(',')[1]
-                         select information.Id).FirstOrDefault();
+                    var query = (from information in db.tbl_InformationFields
+                                 where information.InformationName == item.ToString().Split(',')[1]
+                                 select information).FirstOrDefault();
 
                     tbl_infoTextbox textbox = new tbl_infoTextbox
                     {
                         TextboxID = getTextboxID,
-                        InformationID = query,
+                        InformationID = int.Parse(item.ToString().Split(',')[2]),
                         NumCharPos = int.Parse(item.ToString().Split(',')[3])
                     };
 

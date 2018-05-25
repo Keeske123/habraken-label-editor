@@ -9,9 +9,9 @@
         Title="MainWindow" Height="1080" Width="1920" WindowStyle="None" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="900*"></RowDefinition>
-            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="900*"/>
+            <RowDefinition Height="20*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" x:Name="gridHeader" Background="#FF323764" Margin="0,0,0,973" Grid.RowSpan="2" >
             <Grid>
@@ -26,7 +26,20 @@
                     <Label x:Name="lblUserProfile" Content="userProfile" Margin="0,20,105,6" FontStyle="Italic" FontSize="16" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="282" Foreground="White"/>
 
                     <Image x:Name="imgLogin" Margin="297,1,10,19" Source="/Images/Login.png" MouseUp="btnLogin_Click" >
-                       
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Margin" Value="20,20,10,10" />
+                                        <Setter Property="Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect ShadowDepth="3" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
                     </Image>
                     <PasswordBox x:Name="pb_Login" Margin="42,10,105,26" FontSize="40" PasswordChar="*"/>
                 </Grid>
@@ -34,15 +47,47 @@
         </Grid>
 
         <Grid x:Name="gridMain" Grid.Row="1">
-            <myControls:Home x:Name="home"  Visibility="Visible" Margin="0,10,0,0" />
-            <myControls:Logo x:Name="logo" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Height="534" Width="1092"  />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="467*"/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
+            <myControls:Home x:Name="home" Visibility="Collapsed" Margin="0,10,0,0" Grid.ColumnSpan="2" />
+            <myControls:Logo x:Name="logo" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center" Height="534" Width="1092" Margin="410,230,366,231"  />
         </Grid>
 
         <Grid Grid.Row="1" Background="#FF323764" Margin="0,987,0,0" Grid.RowSpan="2">
             <Image x:Name="btnExit" Margin="1872,0,10,0" Source="/Images/exit.png"  MouseUp="btnExit_Click">
-                
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Margin" Value="20,20,10,10" />
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="3" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
             </Image>
-            <Image x:Name="btnHome" Margin="10,0,1872,0" Source="/Images/Home.png" MouseUp="btnHome_MouseUp"/>
+            <Image x:Name="btnHome" Margin="10,0,1872,0" Source="/Images/Home.png" MouseUp="btnHome_MouseUp">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Margin" Value="20,20,10,10" />
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="3" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
         </Grid>
     </Grid>
 </Window>
