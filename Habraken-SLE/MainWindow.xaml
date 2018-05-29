@@ -41,7 +41,8 @@
                             </Style>
                         </Image.Style>
                     </Image>
-                    <PasswordBox x:Name="pb_Login" Margin="42,10,105,26" FontSize="40" PasswordChar="*"/>
+                    <PasswordBox x:Name="pb_Login" Margin="42,10,95,26" FontSize="40" PasswordChar="*" Width="250" />
+                    <Label x:Name="lblLogin" Content="Login:" HorizontalAlignment="Left" FontSize="32" Margin="-58,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.228,0.026" Foreground="White"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -72,7 +73,7 @@
                     </Style>
                 </Image.Style>
             </Image>
-            <Image x:Name="btnHome" Margin="10,0,1872,0" Source="/Images/Home.png" MouseUp="btnHome_MouseUp">
+            <Image x:Name="btnHome" Margin="10,0,1872,0" Source="/Images/Home.png" MouseUp="btnHome_MouseUp" Visibility="Hidden">
                 <Image.Style>
                     <Style TargetType="Image">
                         <Style.Triggers>

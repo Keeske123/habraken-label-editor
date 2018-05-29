@@ -24,9 +24,7 @@ namespace Habraken_SLE.Overlays
     /// </summary>
     public partial class Designer : UserControl
     {
-
-        string con = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\AFSTUDEER STAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\Periode 11-12\Habraken\Habraken-SLE\dbLabelEditor.mdf;Integrated Security=True";
-
+        string con = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\OPLEVERING KT 2\20180525_P12_KT2_03_Elsman-Kees\Habraken\Habraken-SLE\dbLabelEditor.mdf;Integrated Security=True";
 
         public TextBox textbox;
         public Image barcode, bcTemp;
@@ -152,6 +150,7 @@ namespace Habraken_SLE.Overlays
                 box.RadiusY = 5;
                 box.RadiusX = 5;
                 box.StrokeThickness = 5;
+                box.Fill = new SolidColorBrush(Colors.Transparent);
                 box.MouseUp += new MouseButtonEventHandler(this.Element_MouseUp);
                 SolidColorBrush colorBlack = new SolidColorBrush();
                 colorBlack.Color = Colors.Black;
@@ -197,6 +196,8 @@ namespace Habraken_SLE.Overlays
                     colorBlack.Color = Colors.Black;
                     tempBox.Stroke = colorBlack;
                     tempBox.Name = box.Name;
+                    tempBox.Fill = new SolidColorBrush(Colors.Transparent);
+
                     boxList.Add(tempBox);
                     canvas_.Children.Remove(box);
                     canvas_Preview.Children.Add(tempBox);
@@ -293,67 +294,70 @@ namespace Habraken_SLE.Overlays
 
         private void Cb_controls_SelectionChanged(object sender, SelectionChangedEventArgs e) // Update Value Boxes In Properties Grid
         {
-            if (rb_boxEdgesCurved.Visibility == Visibility.Visible)
+            if (Cb_controls.SelectedItem != null)
             {
-                rb_boxEdgesCurved.Visibility = Visibility.Hidden;
-            }
-            if (finishedAddingComboBoxItems == true)
-            {
-                if (Cb_controls.SelectedItem.ToString().Contains("textbox"))
+                if (rb_boxEdgesCurved.Visibility == Visibility.Visible)
                 {
-                    foreach (TextBox element in tbList)
+                    rb_boxEdgesCurved.Visibility = Visibility.Hidden;
+                }
+                if (finishedAddingComboBoxItems == true)
+                {
+                    if (Cb_controls.SelectedItem.ToString().Contains("textbox"))
                     {
-                        if (element.Name == Cb_controls.SelectedItem.ToString())
+                        foreach (TextBox element in tbList)
                         {
-                            Point relativePoint = element.TransformToAncestor(gr_preview).Transform(new Point(0, 0));
-                            tb_width.Text = element.Width.ToString();
-                            tb_height.Text = element.Height.ToString();
-                            tb_posX.Text = relativePoint.X.ToString();
-                            tb_posY.Text = relativePoint.Y.ToString();
+                            if (element.Name == Cb_controls.SelectedItem.ToString())
+                            {
+                                Point relativePoint = element.TransformToAncestor(gr_preview).Transform(new Point(0, 0));
+                                tb_width.Text = element.Width.ToString();
+                                tb_height.Text = element.Height.ToString();
+                                tb_posX.Text = relativePoint.X.ToString();
+                                tb_posY.Text = relativePoint.Y.ToString();
+                            }
                         }
                     }
-                }
-                else if (Cb_controls.SelectedItem.ToString().Contains("line"))
-                {
-                    foreach (Line element in lineList)
+                    else if (Cb_controls.SelectedItem.ToString().Contains("line"))
                     {
-                        if (element.Name == Cb_controls.SelectedItem.ToString())
+                        foreach (Line element in lineList)
                         {
-                            Point relativePoint = element.TransformToAncestor(gr_preview).Transform(new Point(0, 0));
-                            tb_width.Text = element.Width.ToString();
-                            tb_height.Text = element.Height.ToString();
-                            tb_posX.Text = relativePoint.X.ToString();
-                            tb_posY.Text = relativePoint.Y.ToString();
+                            if (element.Name == Cb_controls.SelectedItem.ToString())
+                            {
+                                Point relativePoint = element.TransformToAncestor(gr_preview).Transform(new Point(0, 0));
+                                tb_width.Text = element.Width.ToString();
+                                tb_height.Text = element.Height.ToString();
+                                tb_posX.Text = relativePoint.X.ToString();
+                                tb_posY.Text = relativePoint.Y.ToString();
+                            }
                         }
                     }
-                }
-                else if (Cb_controls.SelectedItem.ToString().Contains("_box"))
-                {
-                    rb_boxEdgesCurved.Visibility = Visibility.Visible;
-                    foreach (Rectangle element in boxList)
+                    else if (Cb_controls.SelectedItem.ToString().Contains("_box"))
                     {
-                        if (element.Name == Cb_controls.SelectedItem.ToString())
+                        rb_boxEdgesCurved.Visibility = Visibility.Visible;
+                        foreach (Rectangle element in boxList)
                         {
-                            Point relativePoint = element.TransformToAncestor(gr_preview).Transform(new Point(0, 0));
-                            tb_width.Text = element.ActualWidth.ToString();
-                            tb_height.Text = element.ActualHeight.ToString();
-                            tb_posX.Text = relativePoint.X.ToString();
-                            tb_posY.Text = relativePoint.Y.ToString();
+                            if (element.Name == Cb_controls.SelectedItem.ToString())
+                            {
+                                Point relativePoint = element.TransformToAncestor(gr_preview).Transform(new Point(0, 0));
+                                tb_width.Text = element.ActualWidth.ToString();
+                                tb_height.Text = element.ActualHeight.ToString();
+                                tb_posX.Text = relativePoint.X.ToString();
+                                tb_posY.Text = relativePoint.Y.ToString();
+                            }
                         }
                     }
-                }
-                else if (Cb_controls.SelectedItem.ToString().Contains("barcode"))
-                {
-                    foreach (Image element in barcodeList)
+                    else if (Cb_controls.SelectedItem.ToString().Contains("barcode"))
                     {
-                        if (element.Name == Cb_controls.SelectedItem.ToString())
+                        foreach (Image element in barcodeList)
                         {
-                            double positionX = Canvas.GetLeft(element);
-                            double positionY = Canvas.GetTop(element);
-                            tb_width.Text = element.Width.ToString();
-                            tb_height.Text = element.Height.ToString();
-                            tb_posX.Text = positionX.ToString();
-                            tb_posY.Text = positionY.ToString();
+                            if (element.Name == Cb_controls.SelectedItem.ToString())
+                            {
+                                double positionX = Canvas.GetLeft(element);
+                                double positionY = Canvas.GetTop(element);
+                                tb_width.Text = element.Width.ToString();
+                                tb_height.Text = element.Height.ToString();
+                                tb_posX.Text = positionX.ToString();
+                                tb_posY.Text = positionY.ToString();
+                            }
                         }
                     }
                 }
@@ -362,180 +366,128 @@ namespace Habraken_SLE.Overlays
 
         private void btn_UpdateElement_Click(object sender, RoutedEventArgs e) // Resize / Move Elements In Preview
         {
-            double canvasWidth = gr_preview.Width;
-            double canvasHeight = gr_preview.Height;
-
-            if (Cb_controls.SelectedItem.ToString().Contains("textbox"))
+            if (Cb_controls.SelectedItem != null)
             {
-                foreach (TextBox element in tbList)
+                double canvasWidth = gr_preview.Width;
+                double canvasHeight = gr_preview.Height;
+
+                if (Cb_controls.SelectedItem.ToString().Contains("textbox"))
                 {
-                    if (element.Name == Cb_controls.SelectedItem.ToString())
+                    foreach (TextBox element in tbList)
                     {
-                        double posX = Convert.ToDouble(tb_posX.Text);
-                        double posY = Convert.ToDouble(tb_posY.Text);
+                        if (element.Name == Cb_controls.SelectedItem.ToString())
+                        {
+                            double posX = Convert.ToDouble(tb_posX.Text);
+                            double posY = Convert.ToDouble(tb_posY.Text);
 
-                        // check if element goes out of canvas
-                        if (posX < 0 || posX > canvasWidth - element.ActualWidth)
-                        {
-                            MessageBox.Show("Value for 'Pos X' out of bounds.\n Maximum value for 'Pos X' is " + (gr_preview.Width - element.Width), "Warning");
-                        }
-                        else
-                        {
-                            Canvas.SetLeft(element, Convert.ToInt32(posX));
-                        }
-                        if (posY < 0 || posY > canvasHeight - element.ActualHeight)
-                        {
-                            MessageBox.Show("Value for 'Pos Y' out of bounds.\n Maximum value for 'Pos Y' is " + gr_preview.Height.ToString(), "Warning");
-                        }
-                        else
-                        {
-                            Canvas.SetTop(element, Convert.ToInt32(posY));
-                        }
+                            // check if element goes out of canvas
+                            if (posX < 0 || posX > canvasWidth - element.ActualWidth)
+                            {
+                                MessageBox.Show("Value for 'Pos X' out of bounds.\n Maximum value for 'Pos X' is " + (gr_preview.Width - element.Width), "Warning");
+                            }
+                            else
+                            {
+                                Canvas.SetLeft(element, Convert.ToInt32(posX));
+                            }
+                            if (posY < 0 || posY > canvasHeight - element.ActualHeight)
+                            {
+                                MessageBox.Show("Value for 'Pos Y' out of bounds.\n Maximum value for 'Pos Y' is " + gr_preview.Height.ToString(), "Warning");
+                            }
+                            else
+                            {
+                                Canvas.SetTop(element, Convert.ToInt32(posY));
+                            }
 
-                        double newWidth = Convert.ToDouble(tb_width.Text);
-                        double newHeight = Convert.ToDouble(tb_height.Text);
-                        if (posX > canvasWidth - newWidth)
-                        {
-                            MessageBox.Show("Unable to change width of element.\nElement would go offscreen.", "Warning");
-                        }
-                        else
-                        {
-                            element.Width = Convert.ToInt32(tb_width.Text);
-                        }
-                        if (posY > canvasHeight - newHeight)
-                        {
-                            MessageBox.Show("Unable to change height of element.\nElement would go offscreen.", "Warning");
-                        }
-                        else
-                        {
-                            element.Height = Convert.ToInt32(tb_height.Text);
+                            double newWidth = Convert.ToDouble(tb_width.Text);
+                            double newHeight = Convert.ToDouble(tb_height.Text);
+                            if (posX > canvasWidth - newWidth)
+                            {
+                                MessageBox.Show("Unable to change width of element.\nElement would go offscreen.", "Warning");
+                            }
+                            else
+                            {
+                                element.Width = Convert.ToInt32(tb_width.Text);
+                            }
+                            if (posY > canvasHeight - newHeight)
+                            {
+                                MessageBox.Show("Unable to change height of element.\nElement would go offscreen.", "Warning");
+                            }
+                            else
+                            {
+                                element.Height = Convert.ToInt32(tb_height.Text);
+                            }
                         }
                     }
                 }
-            }
 
-            if (Cb_controls.SelectedItem.ToString().Contains("_box"))
-            {
-                foreach (Rectangle element in boxList)
+                if (Cb_controls.SelectedItem.ToString().Contains("_box"))
                 {
-                    if (box.Name == Cb_controls.SelectedItem.ToString())
+                    foreach (Rectangle element in boxList)
                     {
-                        double posX = Convert.ToDouble(tb_posX.Text);
-                        double posY = Convert.ToDouble(tb_posY.Text);
+                        if (box.Name == Cb_controls.SelectedItem.ToString())
+                        {
+                            double posX = Convert.ToDouble(tb_posX.Text);
+                            double posY = Convert.ToDouble(tb_posY.Text);
 
-                        // check if element goes out of canvas
-                        if (posX < 0 || posX > canvasWidth - element.ActualWidth)
-                        {
-                            MessageBox.Show("Value for 'Pos X' out of bounds.\n Maximum value for 'Pos X' is " + (gr_preview.Width - element.Width), "Warning");
-                        }
-                        else
-                        {
-                            Canvas.SetLeft(element, Convert.ToInt32(posX));
-                        }
-                        if (posY < 0 || posY > canvasHeight - element.ActualHeight)
-                        {
-                            MessageBox.Show("Value for 'Pos Y' out of bounds.\n Maximum value for 'Pos Y' is " + gr_preview.Height.ToString(), "Warning");
-                        }
-                        else
-                        {
-                            Canvas.SetTop(element, Convert.ToInt32(posY));
-                        }
+                            // check if element goes out of canvas
+                            if (posX < 0 || posX > canvasWidth - element.ActualWidth)
+                            {
+                                MessageBox.Show("Value for 'Pos X' out of bounds.\n Maximum value for 'Pos X' is " + (gr_preview.Width - element.Width), "Warning");
+                            }
+                            else
+                            {
+                                Canvas.SetLeft(element, Convert.ToInt32(posX));
+                            }
+                            if (posY < 0 || posY > canvasHeight - element.ActualHeight)
+                            {
+                                MessageBox.Show("Value for 'Pos Y' out of bounds.\n Maximum value for 'Pos Y' is " + gr_preview.Height.ToString(), "Warning");
+                            }
+                            else
+                            {
+                                Canvas.SetTop(element, Convert.ToInt32(posY));
+                            }
 
-                        double newWidth = Convert.ToDouble(tb_width.Text);
-                        double newHeight = Convert.ToDouble(tb_height.Text);
-                        if (posX > canvasWidth - newWidth)
-                        {
-                            MessageBox.Show("Unable to change width of element.\nElement would go offscreen.", "Warning");
-                        }
-                        else
-                        {
-                            element.Width = Convert.ToInt32(tb_width.Text);
-                        }
-                        if (posY > canvasHeight - newHeight)
-                        {
-                            MessageBox.Show("Unable to change height of element.\nElement would go offscreen.", "Warning");
-                        }
-                        else
-                        {
-                            element.Height = Convert.ToInt32(tb_height.Text);
-                        }
+                            double newWidth = Convert.ToDouble(tb_width.Text);
+                            double newHeight = Convert.ToDouble(tb_height.Text);
+                            if (posX > canvasWidth - newWidth)
+                            {
+                                MessageBox.Show("Unable to change width of element.\nElement would go offscreen.", "Warning");
+                            }
+                            else
+                            {
+                                element.Width = Convert.ToInt32(tb_width.Text);
+                            }
+                            if (posY > canvasHeight - newHeight)
+                            {
+                                MessageBox.Show("Unable to change height of element.\nElement would go offscreen.", "Warning");
+                            }
+                            else
+                            {
+                                element.Height = Convert.ToInt32(tb_height.Text);
+                            }
 
-                        if (rb_boxEdgesCurved.IsChecked == true)
-                        {
-                            element.RadiusY = 5;
-                            element.RadiusX = 5;
-                        }
-                        else
-                        {
-                            element.RadiusY = 0;
-                            element.RadiusX = 0;
+                            if (rb_boxEdgesCurved.IsChecked == true)
+                            {
+                                element.RadiusY = 5;
+                                element.RadiusX = 5;
+                            }
+                            else
+                            {
+                                element.RadiusY = 0;
+                                element.RadiusX = 0;
+                            }
                         }
                     }
                 }
-            }
 
-            if (Cb_controls.SelectedItem.ToString().Contains("line"))
-            {
-                foreach (Line element in lineList)
+                if (Cb_controls.SelectedItem.ToString().Contains("line"))
                 {
-                    if (element.Name == Cb_controls.SelectedItem.ToString())
+                    foreach (Line element in lineList)
                     {
-                        double posX = Convert.ToDouble(tb_posX.Text);
-                        double posY = Convert.ToDouble(tb_posY.Text);
-
-                        // check if element goes out of canvas
-                        if (posX < 0 || posX > canvasWidth - element.ActualWidth)
+                        if (element.Name == Cb_controls.SelectedItem.ToString())
                         {
-                            MessageBox.Show("Value for 'Pos X' out of bounds.\n Maximum value for 'Pos X' is " + (gr_preview.Width - element.Width), "Warning");
-                        }
-                        else
-                        {
-                            Canvas.SetLeft(element, Convert.ToInt32(posX));
-                        }
-                        if (posY < 0 || posY > canvasHeight - element.ActualHeight)
-                        {
-                            MessageBox.Show("Value for 'Pos Y' out of bounds.\n Maximum value for 'Pos Y' is " + gr_preview.Height.ToString(), "Warning");
-                        }
-                        else
-                        {
-                            Canvas.SetTop(element, Convert.ToInt32(posY));
-                        }
-
-                        double newWidth = Convert.ToDouble(tb_width.Text);
-                        double newHeight = Convert.ToDouble(tb_height.Text);
-                        if (posX > canvasWidth - newWidth)
-                        {
-                            MessageBox.Show("Unable to change width of element.\nElement would go offscreen.", "Warning");
-                        }
-                        else
-                        {
-                            element.Width = Convert.ToInt32(tb_width.Text);
-                        }
-                        if (posY > canvasHeight - newHeight)
-                        {
-                            MessageBox.Show("Unable to change height of element.\nElement would go offscreen.", "Warning");
-                        }
-                        else
-                        {
-                            element.Height = Convert.ToInt32(tb_height.Text);
-                        }
-
-                    }
-                }
-            }
-
-            if (Cb_controls.SelectedItem.ToString().Contains("barcode"))
-            {
-                foreach (Image element in barcodeList)
-                {
-                    if (element.Name == Cb_controls.SelectedItem.ToString())
-                    {
-                        double posX = Convert.ToDouble(tb_posX.Text);
-                        double posY = Convert.ToDouble(tb_posY.Text);
-
-                        try
-                        {
-
+                            double posX = Convert.ToDouble(tb_posX.Text);
+                            double posY = Convert.ToDouble(tb_posY.Text);
 
                             // check if element goes out of canvas
                             if (posX < 0 || posX > canvasWidth - element.ActualWidth)
@@ -575,10 +527,65 @@ namespace Habraken_SLE.Overlays
                             }
 
                         }
-                        catch (Exception)
-                        {
+                    }
+                }
 
-                            MessageBox.Show("Dit Element kan niet buiten de grid komen te staan");
+                if (Cb_controls.SelectedItem.ToString().Contains("barcode"))
+                {
+                    foreach (Image element in barcodeList)
+                    {
+                        if (element.Name == Cb_controls.SelectedItem.ToString())
+                        {
+                            double posX = Convert.ToDouble(tb_posX.Text);
+                            double posY = Convert.ToDouble(tb_posY.Text);
+
+                            try
+                            {
+
+
+                                // check if element goes out of canvas
+                                if (posX < 0 || posX > canvasWidth - element.ActualWidth)
+                                {
+                                    MessageBox.Show("Value for 'Pos X' out of bounds.\n Maximum value for 'Pos X' is " + (gr_preview.Width - element.Width), "Warning");
+                                }
+                                else
+                                {
+                                    Canvas.SetLeft(element, Convert.ToInt32(posX));
+                                }
+                                if (posY < 0 || posY > canvasHeight - element.ActualHeight)
+                                {
+                                    MessageBox.Show("Value for 'Pos Y' out of bounds.\n Maximum value for 'Pos Y' is " + gr_preview.Height.ToString(), "Warning");
+                                }
+                                else
+                                {
+                                    Canvas.SetTop(element, Convert.ToInt32(posY));
+                                }
+
+                                double newWidth = Convert.ToDouble(tb_width.Text);
+                                double newHeight = Convert.ToDouble(tb_height.Text);
+                                if (posX > canvasWidth - newWidth)
+                                {
+                                    MessageBox.Show("Unable to change width of element.\nElement would go offscreen.", "Warning");
+                                }
+                                else
+                                {
+                                    element.Width = Convert.ToInt32(tb_width.Text);
+                                }
+                                if (posY > canvasHeight - newHeight)
+                                {
+                                    MessageBox.Show("Unable to change height of element.\nElement would go offscreen.", "Warning");
+                                }
+                                else
+                                {
+                                    element.Height = Convert.ToInt32(tb_height.Text);
+                                }
+
+                            }
+                            catch (Exception)
+                            {
+
+                                MessageBox.Show("Dit Element kan niet buiten de grid komen te staan");
+                            }
                         }
                     }
                 }
@@ -587,88 +594,91 @@ namespace Habraken_SLE.Overlays
 
         private void btn_removeElement_Click(object sender, RoutedEventArgs e)
         {
-            List<TextBox> temptblist = new List<TextBox>();
-            List<Line> templinelist = new List<Line>();
-            List<Rectangle> tempboxlist = new List<Rectangle>();
-            List<Image> tempbarcodelist = new List<Image>();
-
-            if (Cb_controls.SelectedItem.ToString().Contains("textbox"))
+            if (Cb_controls.SelectedItem != null)
             {
-                temptblist = tbList;
-                foreach (TextBox element in tbList)
+                List<TextBox> temptblist = new List<TextBox>();
+                List<Line> templinelist = new List<Line>();
+                List<Rectangle> tempboxlist = new List<Rectangle>();
+                List<Image> tempbarcodelist = new List<Image>();
+
+                if (Cb_controls.SelectedItem.ToString().Contains("textbox"))
                 {
-                    if (element.Name == Cb_controls.SelectedItem.ToString())
+                    temptblist = tbList;
+                    foreach (TextBox element in tbList)
                     {
-                        if (MessageBox.Show("Are you sure you want to remove this element?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                        if (element.Name == Cb_controls.SelectedItem.ToString())
                         {
-                            canvas_Preview.Children.Remove(element);
-                            temptblist.Remove(element);
-                            break;
+                            if (MessageBox.Show("Are you sure you want to remove this element?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                            {
+                                canvas_Preview.Children.Remove(element);
+                                temptblist.Remove(element);
+                                break;
+                            }
                         }
                     }
+                    tbList = temptblist;
                 }
-                tbList = temptblist;
-            }
 
-            if (Cb_controls.SelectedItem.ToString().Contains("_box"))
-            {
-                tempboxlist = boxList;
-                foreach (Rectangle element in boxList)
+                if (Cb_controls.SelectedItem.ToString().Contains("_box"))
                 {
-                    if (element.Name == Cb_controls.SelectedItem.ToString())
+                    tempboxlist = boxList;
+                    foreach (Rectangle element in boxList)
                     {
-                        if (MessageBox.Show("Are you sure you want to remove this element?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                        if (element.Name == Cb_controls.SelectedItem.ToString())
                         {
-                            canvas_Preview.Children.Remove(element);
-                            tempboxlist.Remove(element);
-                            break;
+                            if (MessageBox.Show("Are you sure you want to remove this element?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                            {
+                                canvas_Preview.Children.Remove(element);
+                                tempboxlist.Remove(element);
+                                break;
+                            }
                         }
                     }
+                    boxList = tempboxlist;
                 }
-                boxList = tempboxlist;
-            }
 
-            if (Cb_controls.SelectedItem.ToString().Contains("line"))
-            {
-                templinelist = lineList;
-                foreach (Line element in lineList)
+                if (Cb_controls.SelectedItem.ToString().Contains("line"))
                 {
-                    if (element.Name == Cb_controls.SelectedItem.ToString())
+                    templinelist = lineList;
+                    foreach (Line element in lineList)
                     {
-                        if (MessageBox.Show("Are you sure you want to remove this element?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                        if (element.Name == Cb_controls.SelectedItem.ToString())
                         {
-                            canvas_Preview.Children.Remove(element);
-                            templinelist.Remove(element);
-                            break;
+                            if (MessageBox.Show("Are you sure you want to remove this element?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                            {
+                                canvas_Preview.Children.Remove(element);
+                                templinelist.Remove(element);
+                                break;
+                            }
                         }
                     }
+                    lineList = templinelist;
                 }
-                lineList = templinelist;
-            }
 
-            if (Cb_controls.SelectedItem.ToString().Contains("barcode"))
-            {
-                tempbarcodelist = barcodeList;
-                foreach (Image element in barcodeList)
+                if (Cb_controls.SelectedItem.ToString().Contains("barcode"))
                 {
-                    if (element.Name == Cb_controls.SelectedItem.ToString())
+                    tempbarcodelist = barcodeList;
+                    foreach (Image element in barcodeList)
                     {
-                        if (MessageBox.Show("Are you sure you want to remove this element?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                        if (element.Name == Cb_controls.SelectedItem.ToString())
                         {
-                            canvas_Preview.Children.Remove(element);
-                            tempbarcodelist.Remove(element);
-                            break;
+                            if (MessageBox.Show("Are you sure you want to remove this element?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                            {
+                                canvas_Preview.Children.Remove(element);
+                                tempbarcodelist.Remove(element);
+                                break;
+                            }
                         }
                     }
+                    barcodeList = tempbarcodelist;
                 }
-                barcodeList = tempbarcodelist;
-            }
-            UpdateComboBox();
-            tb_height.Text = "0";
-            tb_width.Text = "0";
-            tb_posX.Text = "0";
-            tb_posY.Text = "0";
-        } // Removes the selected element
+                UpdateComboBox();
+                tb_height.Text = "0";
+                tb_width.Text = "0";
+                tb_posX.Text = "0";
+                tb_posY.Text = "0";
+            } // Removes the selected element
+        }
 
         private void lvLabels_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -686,63 +696,83 @@ namespace Habraken_SLE.Overlays
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (lvLabels.SelectedItem != null)
+            try
             {
-                if (MessageBox.Show("Do you really wish to Delete this Item?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (lvLabels.SelectedItem != null)
                 {
-                    var db = new HLE_LinqtoSQLDataContext(con);
-
-                    var query = (from q in db.tbl_labels
-                                 where q.Name == lvLabels.SelectedItem.ToString().Split(',')[0].Remove(0, 6)
-                                 select q).SingleOrDefault();
-
-                    if (query != null)
+                    if (MessageBox.Show("Do you really wish to Delete this Item?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     {
-                        var selectBarcode = from q in db.tbl_barcodes
-                                            where q.LabelID == query.Id
+                        var db = new HLE_LinqtoSQLDataContext(con);
+
+                        var selectLabel = (from q in db.tbl_labels
+                                           where q.Name == lvLabels.SelectedItem.ToString().Split(',')[0].Remove(0, 6)
+                                           select q).SingleOrDefault();
+
+                        if (selectLabel != null)
+                        {
+                            var selectBarcode = from q in db.tbl_barcodes
+                                                where q.LabelID == selectLabel.Id
+                                                select q;
+
+                            db.tbl_barcodes.DeleteAllOnSubmit(selectBarcode);
+
+                            var selectTextbox = from q in db.tbl_textboxes
+                                                where q.LabelID == selectLabel.Id
+                                                select q;
+
+                            db.tbl_textboxes.DeleteAllOnSubmit(selectTextbox);
+
+                            var selectBox = from q in db.tbl_boxes
+                                            where q.LabelID == selectLabel.Id
                                             select q;
 
-                        db.tbl_barcodes.DeleteAllOnSubmit(selectBarcode);
+                            db.tbl_boxes.DeleteAllOnSubmit(selectBox);
 
-                        var selectTextbox = from q in db.tbl_textboxes
-                                            where q.LabelID == query.Id
-                                            select q;
+                            var selectLines = from q in db.tbl_lines
+                                              where q.LabelID == selectLabel.Id
+                                              select q;
 
-                        db.tbl_textboxes.DeleteAllOnSubmit(selectTextbox);
+                            db.tbl_lines.DeleteAllOnSubmit(selectLines);
 
-                        var selectBox = from q in db.tbl_boxes
-                                        where q.LabelID == query.Id
-                                        select q;
+                            db.tbl_labels.DeleteOnSubmit(selectLabel);
 
-                        db.tbl_boxes.DeleteAllOnSubmit(selectBox);
-
-                        var selectLines = from q in db.tbl_lines
-                                          where q.LabelID == query.Id
-                                          select q;
-
-
-                        db.tbl_lines.DeleteAllOnSubmit(selectLines);
-
-                        db.tbl_labels.DeleteOnSubmit(query);
-
-                        db.SubmitChanges();
-                        UpdateListview();
-
-
+                            db.SubmitChanges();
+                            UpdateListview();
+                        }
                     }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Unable to Delete this Item. Please contact your Supervisor.");
             }
         }
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
-            canvas_Preview.Children.Clear();
-            lineList.Clear();
-            barcodeList.Clear();
-            tbList.Clear();
-            tbLabelName.Text = "";
-            boxList.Clear();
-            Cb_controls.Items.Clear();
+            if (canvas_Preview.Children.Count > 0)
+            {
+                if (MessageBox.Show("Do you really want to Cancel these changes?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+                    canvas_Preview.Children.Clear();
+                    lineList.Clear();
+                    barcodeList.Clear();
+                    tbList.Clear();
+                    tbLabelName.Text = "";
+                    boxList.Clear();
+                    Cb_controls.Items.Clear();
+                }
+            }
+            else
+            {
+                canvas_Preview.Children.Clear();
+                lineList.Clear();
+                barcodeList.Clear();
+                tbList.Clear();
+                tbLabelName.Text = "";
+                boxList.Clear();
+                Cb_controls.Items.Clear();
+            }
         }
 
         private void tbLabelName_TextChanged(object sender, TextChangedEventArgs e)
@@ -759,105 +789,36 @@ namespace Habraken_SLE.Overlays
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
-            var db = new HLE_LinqtoSQLDataContext(con);
-
-            var query = (from q in db.tbl_labels
-                         where q.Name == lvLabels.SelectedItem.ToString().Split(',')[0].Remove(0, 6)
-                         select q).SingleOrDefault();
-
-            if (query != null)
+            if (canvas_Preview.Children.Count > 0)
             {
-                tbLabelName.Text = query.Name;
-
-                foreach (var item in query.tbl_barcodes)
+                if (MessageBox.Show("Do you really want to Cancel these changes?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
-                    Image tempBarcode = new Image();
-                    tempBarcode.Width = item.Width;
-                    tempBarcode.Height = item.Height;
+                    canvas_Preview.Children.Clear();
+                    lineList.Clear();
+                    barcodeList.Clear();
+                    tbList.Clear();
+                    tbLabelName.Text = "";
+                    boxList.Clear();
+                    Cb_controls.Items.Clear();
 
-                    string filePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "code128.png");
-                    BitmapImage barcodeImage = new BitmapImage();
-                    barcodeImage.BeginInit();
-                    barcodeImage.UriSource = new Uri(filePath);
-                    barcodeImage.EndInit();
+                    OpenLabel();
 
-                    tempBarcode.Source = barcodeImage;
-                    tempBarcode.Name = item.Name;
-                    tempBarcode.Stretch = Stretch.Fill;
-                    //tempBarcode.Margin = new Thickness(item.PosX, item.PosY, 0, 0);
-                    Canvas.SetTop(tempBarcode, item.PosY);
-                    Canvas.SetLeft(tempBarcode, item.PosX);
-
-                    elementBeingDragged = "barcode";
-                    barcodeList.Add(tempBarcode);
-                    canvas_Preview.Children.Add(tempBarcode);
-                    elementBeingDragged = "";
-                    UpdateComboBox();
-                }
-
-                foreach (var item in query.tbl_boxes)
-                {
-                    Rectangle tempBox = new Rectangle();
-                    tempBox.Height = item.Heigth;
-                    tempBox.Width = item.Width;
-                    tempBox.StrokeThickness = 3;
-                    tempBox.Margin = new Thickness(item.PosX, item.PosY, 0, 0);
-
-                    SolidColorBrush colorBlack = new SolidColorBrush();
-                    colorBlack.Color = Colors.Black;
-                    tempBox.Stroke = colorBlack;
-                    tempBox.Name = item.Name;
-
-                    boxList.Add(tempBox);
-                    canvas_.Children.Remove(box);
-                    canvas_Preview.Children.Add(tempBox);
-                    elementBeingDragged = "";
-                    UpdateComboBox();
-                }
-
-                foreach (var item in query.tbl_lines)
-                {
-                    Line tempLine = new Line();
-                    tempLine.X1 = 0;
-                    tempLine.Y1 = 0;
-                    tempLine.X2 = item.PosX;
-                    tempLine.Y2 = item.PosY;
-                    tempLine.Name = item.Name;
-                    tempLine.Width = 50;
-                    tempLine.Height = 3;
-                    tempLine.StrokeThickness = 3;
-
-                    SolidColorBrush colorBlack = new SolidColorBrush();
-                    colorBlack.Color = Colors.Black;
-                    tempLine.Stroke = colorBlack;
-
-                    lineList.Add(tempLine);
-                    //canvas_.Children.Remove(line);
-                    canvas_Preview.Children.Add(tempLine);
-                    elementBeingDragged = "";
-                    UpdateComboBox();
-                }
-
-                foreach (var item in query.tbl_textboxes)
-                {
-                    TextBox tempTextbox = new TextBox();
-                    tempTextbox.Width = item.Width;
-                    tempTextbox.Height = item.Height;
-                    tempTextbox.Text = item.Name;
-                    tempTextbox.Name = item.Name;
-                    tempTextbox.Margin = new Thickness(item.PosX, item.PosY, 0, 0);
-                    tempTextbox.IsReadOnly = true;
-
-                    tbList.Add(tempTextbox);
-                    canvas_.Children.Remove(textbox);
-                    canvas_Preview.Children.Add(tempTextbox);
-                    elementBeingDragged = "";
-                    UpdateComboBox();
+                    btnOpen.IsEnabled = false;
+                    lvLabels.SelectedItem = null;
                 }
             }
+            else
+            {
+                canvas_Preview.Children.Clear();
+                lineList.Clear();
+                barcodeList.Clear();
+                tbList.Clear();
+                tbLabelName.Text = "";
+                boxList.Clear();
+                Cb_controls.Items.Clear();
 
-            btnOpen.IsEnabled = false;
-            lvLabels.SelectedItem = null;
+                OpenLabel();
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -878,25 +839,7 @@ namespace Habraken_SLE.Overlays
                         selectLabel.Heigth = (int)gr_preview.Height;
                         selectLabel.Width = (int)gr_preview.Width;
 
-                        if (barcodeList.Any())
-                        {
-                            SelectBarcode();
-                        }
-
-                        if (tbList.Any())
-                        {
-                            SelectTextbox();
-                        }
-
-                        if (lineList.Any())
-                        {
-                            SelectLine();
-                        }
-
-                        if (boxList.Any())
-                        {
-                            SelectBox();
-                        }
+                        SaveElements();
                     }
                     else
                     {
@@ -911,25 +854,7 @@ namespace Habraken_SLE.Overlays
 
                         db.SubmitChanges();
 
-                        if (barcodeList.Any())
-                        {
-                            SelectBarcode();
-                        }
-
-                        if (tbList.Any())
-                        {
-                            SelectTextbox();
-                        }
-
-                        if (lineList.Any())
-                        {
-                            SelectLine();
-                        }
-
-                        if (boxList.Any())
-                        {
-                            SelectBox();
-                        }
+                        SaveElements();
                     }
                 }
                 catch (Exception ex)
@@ -948,6 +873,29 @@ namespace Habraken_SLE.Overlays
             else
             {
                 MessageBox.Show("You forgot to Give your label a Name");
+            }
+        }
+
+        private void SaveElements()
+        {
+            if (barcodeList.Any())
+            {
+                SelectBarcode();
+            }
+
+            if (tbList.Any())
+            {
+                SelectTextbox();
+            }
+
+            if (lineList.Any())
+            {
+                SelectLine();
+            }
+
+            if (boxList.Any())
+            {
+                SelectBox();
             }
         }
 
@@ -1403,5 +1351,106 @@ namespace Habraken_SLE.Overlays
                 }
             }
         }
+
+        private void OpenLabel()
+        {
+            var db = new HLE_LinqtoSQLDataContext(con);
+
+            var selectLabel = (from q in db.tbl_labels
+                               where q.Name == lvLabels.SelectedItem.ToString().Split(',')[0].Remove(0, 6)
+                               select q).SingleOrDefault();
+
+            if (selectLabel != null)
+            {
+                tbLabelName.Text = selectLabel.Name;
+
+                foreach (var item in selectLabel.tbl_barcodes)
+                {
+                    Image tempBarcode = new Image();
+                    tempBarcode.Width = item.Width;
+                    tempBarcode.Height = item.Height;
+
+                    string filePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "code128.png");
+                    BitmapImage barcodeImage = new BitmapImage();
+                    barcodeImage.BeginInit();
+                    barcodeImage.UriSource = new Uri(filePath);
+                    barcodeImage.EndInit();
+
+                    tempBarcode.Source = barcodeImage;
+                    tempBarcode.Name = item.Name;
+                    tempBarcode.Stretch = Stretch.Fill;
+                    //tempBarcode.Margin = new Thickness(item.PosX, item.PosY, 0, 0);
+                    Canvas.SetTop(tempBarcode, item.PosY);
+                    Canvas.SetLeft(tempBarcode, item.PosX);
+
+                    elementBeingDragged = "barcode";
+                    barcodeList.Add(tempBarcode);
+                    canvas_Preview.Children.Add(tempBarcode);
+                    elementBeingDragged = "";
+                    UpdateComboBox();
+                }
+
+                foreach (var item in selectLabel.tbl_boxes)
+                {
+                    Rectangle tempBox = new Rectangle();
+                    tempBox.Height = item.Heigth;
+                    tempBox.Width = item.Width;
+                    tempBox.StrokeThickness = 3;
+                    tempBox.Margin = new Thickness(item.PosX, item.PosY, 0, 0);
+
+                    SolidColorBrush colorBlack = new SolidColorBrush();
+                    colorBlack.Color = Colors.Black;
+                    tempBox.Stroke = colorBlack;
+                    tempBox.Name = item.Name;
+
+                    boxList.Add(tempBox);
+                    canvas_.Children.Remove(box);
+                    canvas_Preview.Children.Add(tempBox);
+                    elementBeingDragged = "";
+                    UpdateComboBox();
+                }
+
+                foreach (var item in selectLabel.tbl_lines)
+                {
+                    Line tempLine = new Line();
+                    tempLine.X1 = 0;
+                    tempLine.Y1 = 0;
+                    tempLine.X2 = item.PosX;
+                    tempLine.Y2 = item.PosY;
+                    tempLine.Name = item.Name;
+                    tempLine.Width = 50;
+                    tempLine.Height = 3;
+                    tempLine.StrokeThickness = 3;
+
+                    SolidColorBrush colorBlack = new SolidColorBrush();
+                    colorBlack.Color = Colors.Black;
+                    tempLine.Stroke = colorBlack;
+
+                    lineList.Add(tempLine);
+                    //canvas_.Children.Remove(line);
+                    canvas_Preview.Children.Add(tempLine);
+                    elementBeingDragged = "";
+                    UpdateComboBox();
+                }
+
+                foreach (var item in selectLabel.tbl_textboxes)
+                {
+                    TextBox tempTextbox = new TextBox();
+                    tempTextbox.Width = item.Width;
+                    tempTextbox.Height = item.Height;
+                    tempTextbox.Text = item.Name;
+                    tempTextbox.Name = item.Name;
+                    tempTextbox.Margin = new Thickness(item.PosX, item.PosY, 0, 0);
+                    tempTextbox.IsReadOnly = true;
+
+                    tbList.Add(tempTextbox);
+                    canvas_.Children.Remove(textbox);
+                    canvas_Preview.Children.Add(tempTextbox);
+                    elementBeingDragged = "";
+                    UpdateComboBox();
+                }
+            }
+        }
+
     }
 }

@@ -27,7 +27,7 @@ namespace Habraken_SLE.Overlays
         string currentLabel;
         List<string> informationFields = new List<string>();
 
-        string con = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\AFSTUDEER STAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\Periode 11-12\Habraken\Habraken-SLE\dbLabelEditor.mdf;Integrated Security=True";
+        string con = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\OPLEVERING KT 2\20180525_P12_KT2_03_Elsman-Kees\Habraken\Habraken-SLE\dbLabelEditor.mdf;Integrated Security=True";
 
         public ElementVarialbes()
         {

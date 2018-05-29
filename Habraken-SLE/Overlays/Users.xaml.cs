@@ -21,24 +21,22 @@ namespace Habraken_SLE.Overlays
         //HLE_LinqtoSQLDataContext db;
         public string con;
 
-        public Users()
-        { }
 
-        public Users(ref Button button)
+        public Users()
         {
-            con = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\AFSTUDEER STAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\Periode 11-12\Habraken\Habraken-SLE\dbLabelEditor.mdf;Integrated Security=True";
+            con = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\keese_000\Desktop\OPLEVERING KT 2\20180525_P12_KT2_03_Elsman-Kees\Habraken\Habraken-SLE\dbLabelEditor.mdf;Integrated Security=True";
 
             InitializeComponent();
 
             LoadUsersToListView();
             LoadProfiles();
-            
-           // db = new HLE_LinqtoSQLDataContext(con);
+
+            // db = new HLE_LinqtoSQLDataContext(con);
         }
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
             LoadUsersToListView();
             if (tbSearch.Text != "" || tbSearch.Text != null)
             {
@@ -68,6 +66,8 @@ namespace Habraken_SLE.Overlays
         {
             try
             {
+                cbRights.Items.Clear();
+
                 var db = new HLE_LinqtoSQLDataContext(con);
 
                 var query =
@@ -85,49 +85,79 @@ namespace Habraken_SLE.Overlays
             }
         }
 
-        public void UpdateUser(string username)
+        public bool UpdateUser(string username)
         {
+            bool result = true;
             try
             {
                 var db = new HLE_LinqtoSQLDataContext(con);
 
-                var query = (from q in db.tbl_Users
-                             where q.UserName == username
-                             select q).SingleOrDefault();
+                var selectTag = from q in db.tbl_Users
+                                where q.UserID == tbOperatortag.Text
+                                select q;
 
-                query.UserName = tbName.Text;
-                query.UserID = tbOperatortag.Text;
-                query.UserProfileID = GetUserProfileID();
-                query.IsActive = checkActive.IsChecked.Value;
+                var selectUsername = (from q in db.tbl_Users
+                                      where q.UserName == username
+                                      select q).SingleOrDefault();
 
-                db.SubmitChanges();
-                Resetvalues();
+                if (selectTag.Count() > 0)
+                {
+                    MessageBox.Show("This Tag is already Taken");
+                    result = false;
+                }
+                else if (result)
+                {
+                    for (int i = 0; i <= 9; i++)
+                    {
+                        if (tbName.Text.Contains(i.ToString()))
+                        {
+                            MessageBox.Show("The Username may not contain any Numbers");
+                            result = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (result)
+                {
+                    selectUsername.UserName = tbName.Text;
+                    selectUsername.UserID = tbOperatortag.Text;
+                    selectUsername.UserProfileID = GetUserProfileID();
+                    selectUsername.IsActive = checkActive.IsChecked.Value;
+
+                    db.SubmitChanges();
+                    Resetvalues();
+                    result = true;
+                }
             }
             catch
             {
                 MessageBox.Show("Something went wrong While Updating this user");
+                result = false;
             }
             finally
             {
                 LoadUsersToListView();
             }
+            return result;
         }
-        
+
         public void DeleteUser(string username)
         {
-            var db = new HLE_LinqtoSQLDataContext(con);
-
-            var query = from q in db.tbl_Users
-                        where q.UserName == username
-                        select q;
-
-            foreach (var item in query)
-            {
-                db.tbl_Users.DeleteOnSubmit(item);
-            }
-
             try
             {
+                var db = new HLE_LinqtoSQLDataContext(con);
+
+                var query = from q in db.tbl_Users
+                            where q.UserName == username
+                            select q;
+
+                foreach (var item in query)
+                {
+                    db.tbl_Users.DeleteOnSubmit(item);
+                }
+
+
                 db.SubmitChanges();
                 LoadUsersToListView();
                 Resetvalues();
@@ -138,37 +168,66 @@ namespace Habraken_SLE.Overlays
             }
         }
 
-        public void SaveNewUser()
+        public bool SaveNewUser()
         {
+            bool result = true;
             try
             {
                 var db = new HLE_LinqtoSQLDataContext(con);
 
-                tbl_User user = new tbl_User
+                var selectTag = from q in db.tbl_Users
+                                where q.UserID == tbOperatortag.Text
+                                select q;
+
+                if (selectTag.Count() > 0)
                 {
-                    UserName = tbName.Text,
-                    UserProfileID = GetUserProfileID(),
-                    IsActive = checkActive.IsChecked.Value,
-                    UserID = tbOperatortag.Text
-                };
+                    MessageBox.Show("This Tag is already Taken");
+                    result = false;
+                }
+                else if (result)
+                {
+                    for (int i = 0; i <= 9; i++)
+                    {
+                        if (tbName.Text.Contains(i.ToString()))
+                        {
+                            MessageBox.Show("The Username may not contain any Numbers");
+                            result = false;
+                            break;
+                        }
+                    }
+                }
+                if (result)
+                {
+                    tbl_User user = new tbl_User
+                    {
+                        UserName = tbName.Text,
+                        UserProfileID = GetUserProfileID(),
+                        IsActive = checkActive.IsChecked.Value,
+                        UserID = tbOperatortag.Text
+                    };
 
-                db.tbl_Users.InsertOnSubmit(user);
+                    db.tbl_Users.InsertOnSubmit(user);
 
-                db.SubmitChanges();
+                    db.SubmitChanges();
+                    result = true;
+                }
             }
             catch
             {
                 MessageBox.Show("Something went wrong While Adding this user");
+                result = false;
             }
             finally
             {
                 LoadUsersToListView();
             }
+            return result;
         }
+
 
         public void CancelAddEditUser()
         {
-            Resetvalues();           
+            Resetvalues();
         }
 
         private void Resetvalues()
@@ -177,7 +236,7 @@ namespace Habraken_SLE.Overlays
             tbOperatortag.Clear();
             cbRights.Text = "";
             checkActive.IsChecked = false;
-            gbAddEditUsers.IsEnabled = false;            
+            gbAddEditUsers.IsEnabled = false;
         }
 
         private void LoadUsersToListView()
@@ -224,7 +283,7 @@ namespace Habraken_SLE.Overlays
             tbOperatortag.Text = query.UserID;
             tbName.Text = query.UserName;
             cbRights.SelectedItem = query.tbl_userProfile.Userprofile;
-            checkActive.IsChecked = query.IsActive;           
+            checkActive.IsChecked = query.IsActive;
         }
 
         private int GetUserProfileID()

@@ -1,177 +1,177 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="Habraken_SLE.App" Collapsed="true">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Position X="43.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Habraken_SLE.Database" Collapsed="true">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+  <Class Name="Habraken_SLE.Database">
+    <Position X="16.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAgABAABARAAAQAAAAgAAAAQBAAAAAA=</HashCode>
       <FileName>Classes\Database.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Habraken_SLE.Designer" Collapsed="true">
-    <Position X="11.5" Y="0.5" Width="1.5" />
+  <Class Name="Habraken_SLE.Designer">
+    <Position X="23" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAIBAAAAAAAgAA=</HashCode>
       <FileName>Classes\Designer\Designer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Habraken_SLE.DragDrop" Collapsed="true">
-    <Position X="6.25" Y="1.5" Width="1.5" />
+  <Class Name="Habraken_SLE.DragDrop">
+    <Position X="0.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Designer\DragDrop.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Habraken_SLE.Toolbox" Collapsed="true">
-    <Position X="9.75" Y="4.5" Width="1.5" />
+  <Class Name="Habraken_SLE.Toolbox">
+    <Position X="18.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAgAAAAAAAAIAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Designer\Toolbox.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Habraken_SLE.Label" Collapsed="true">
-    <Position X="13.25" Y="1.5" Width="1.5" />
+  <Class Name="Habraken_SLE.Label">
+    <Position X="29.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAQAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Label\Label.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Habraken_SLE.User" Collapsed="true">
-    <Position X="13.25" Y="4.5" Width="1.5" />
+  <Class Name="Habraken_SLE.User">
+    <Position X="32" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAEAICAAAAAAQAAAAAAAgAAAAAQAAAAggA=</HashCode>
       <FileName>Classes\User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Habraken_SLE.HLE_LinqtoSQLDataContext" Collapsed="true">
-    <Position X="9.75" Y="1.5" Width="1.5" />
+    <Position X="43.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABSICJCAAjAAAAAAACjAAAoADggACNQQi0iBkEgAAM=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="Habraken_SLE.tbl_barcode" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.5" Y="2.5" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_barcode" BaseTypeListCollapsed="true">
+    <Position X="25.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIigAQFBAiDAAAAYGEB4EQBjCCAQCCUIAEUCYAUQBE=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.tbl_User" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AoAiAEABAAhBAAAAUAMAAAwBjCgABABAAQAIAAQUEAA=</HashCode>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Habraken_SLE.tbl_box" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="13.25" Y="2.5" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_box" BaseTypeListCollapsed="true">
+    <Position X="34.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAImgAAFAAiDAAAAQCEB4EQBjCSAQACQCAAcCAAUQBA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.tbl_infoBarcode" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15" Y="2.5" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_infoBarcode" BaseTypeListCollapsed="true">
+    <Position X="38.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACiAEABAASAgAIAQAEIAAAhjCAAAAEAAAgJEAAUAUA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.tbl_InformationField" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4.75" Y="4" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_InformationField" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAiIABBBABAAAIAYgEUAiABjCAAAAAEABEAAAAUAAE=</HashCode>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.tbl_infoTextbox" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8" Y="3.5" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_infoTextbox" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABCiEAABEAQAgAIAQAEAAAABjCAAQAEAAAAJEEAWAEA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.tbl_label" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="9.75" Y="3.5" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_label" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABmACgRQASCAAAAQCEAMEQBjCUAQAIISiAIggAUABA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.tbl_line" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.5" Y="3.5" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_line" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIigAAFAAiBAAAAQAEB4AQBjCCAQACQAAAUCAAUQAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.tbl_textbox" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="13.25" Y="3.5" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_textbox" BaseTypeListCollapsed="true">
+    <Position X="36.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAIiIAQFBAiGAAOAQiEB4EQBjCCARASEIAAUAoAUUBA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.tbl_userProfile" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="6.25" Y="4.5" Width="1.5" />
+  <Class Name="Habraken_SLE.tbl_userProfile" BaseTypeListCollapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIgjAAQJEAQBAAAAQAEBQAADjSAEQCAAACCABAAUAAA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Habraken_SLE.tbl_User" BaseTypeListCollapsed="true">
+    <Position X="41" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAiAEABAAhBAAAAUAMAAAwBjCgABABAAQAIAAQUEAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Habraken_SLE.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="6.25" Y="2.5" Width="1.5" />
+    <Position X="48.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAEAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAQA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.Classes.Elements.Barcode" Collapsed="true">
-    <Position X="8" Y="0.5" Width="1.5" />
+  <Class Name="Habraken_SLE.Classes.Elements.Barcode">
+    <Position X="9.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAQAAhAAAAAAAAAAIAAAAAwAAAAAA=</HashCode>
       <FileName>Classes\Elements\Barcode.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Habraken_SLE.Classes.Elements.Textbox" Collapsed="true">
-    <Position X="8" Y="4.5" Width="1.5" />
+  <Class Name="Habraken_SLE.Classes.Elements.Textbox">
+    <Position X="11.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAQAAhAAAAAAAAAAIAAAAAwAAAAAA=</HashCode>
       <FileName>Classes\Elements\Textbox.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WPF.JoshSmith.Controls.DragCanvas" Collapsed="true">
-    <Position X="15" Y="0.5" Width="1.5" />
+    <Position X="47" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAgIgAAwADIAAAEAAAABcQVBABAAAAQAAAgAgAgAA=</HashCode>
       <FileName>DragCanvas.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Habraken_SLE.Overlays.Designer" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="13.25" Y="0.5" Width="1.5" />
+    <Position X="45.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AiFAAQAZkAWAAIBAAACCEwEAIAAIAxSgEAAEACAAFwA=</HashCode>
+      <HashCode>AiFAAQAZkAWAAIRAAACCkwEAIAAIAxSgEAAEACAAFwA=</HashCode>
       <FileName>Overlays\Designer.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Habraken_SLE.Overlays.ElementVarialbes" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8" Y="1.5" Width="1.5" />
+    <Position X="48.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAACAAAAYAAAAAAAAAAQECAAAAgBAAAEAAAQAAAAI=</HashCode>
+      <HashCode>ACAAAAAAAAEAAAAAAAEAAQACAAAAQBCAAEAAAAAQEAI=</HashCode>
       <FileName>Overlays\ElementVarialbes.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Habraken_SLE.Overlays.Home" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.5" Y="1.5" Width="1.5" />
+    <Position X="45.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Overlays\Home.xaml.cs</FileName>
@@ -179,7 +179,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Habraken_SLE.Overlays.Logo" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15" Y="1.5" Width="1.5" />
+    <Position X="47" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Overlays\Logo.xaml.cs</FileName>
@@ -187,7 +187,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Habraken_SLE.Overlays.Toolbox" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.5" Y="4.5" Width="1.5" />
+    <Position X="45.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Overlays\Toolbox.xaml.cs</FileName>
@@ -195,35 +195,35 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Habraken_SLE.Overlays.Usermanagement" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="15" Y="4.5" Width="1.5" />
+    <Position X="47" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAAAAAAAAAAAAAEAAAAAIABAAAQAAAAAAAQA=</HashCode>
       <FileName>Overlays\Usermanagement.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.Overlays.Users" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="6.25" Y="5.5" Width="1.5" />
+  <Class Name="Habraken_SLE.Overlays.Users" BaseTypeListCollapsed="true">
+    <Position X="48.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAEACAEAAAYAQAAAQAAQAAAAAAAAAAAAEA=</HashCode>
       <FileName>Overlays\Users.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Habraken_SLE.Properties.Resources" Collapsed="true">
-    <Position X="8" Y="2.5" Width="1.5" />
+  <Class Name="Habraken_SLE.Properties.Resources">
+    <Position X="14" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Habraken_SLE.Properties.Settings" Collapsed="true">
-    <Position X="9.75" Y="2.5" Width="1.5" />
+    <Position X="43.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAACAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="System.Object">
-    <Position X="20" Y="3.25" Width="1.5" />
+    <Position X="20.75" Y="0.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />

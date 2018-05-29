@@ -247,7 +247,7 @@
                 </ListBox>
             </Grid>
 
-            <Grid Grid.Column="1" Name="gr_preview" Width="600" HorizontalAlignment="Right" Background="Gray" Margin="0,10,400,348" MouseEnter="gr_preview_MouseEnter" >
+            <Grid Grid.Column="1" Name="gr_preview" Width="600" HorizontalAlignment="Right" Background="Gray" Margin="0,46,400,312" MouseEnter="gr_preview_MouseEnter" >
 
                 <jas:DragCanvas x:Name="canvas_Preview">
 
@@ -269,13 +269,15 @@
                 <Label Content="Pos Y"  Margin="0,112,130,-31" HorizontalAlignment="Right"/>
             </Grid>
         </Grid>
-        
+
         <!--<Button x:Name="btnSave" Content="Save Label" Width="75" Click="btnSave_Click" Margin="40,386,1796,202"/>-->
         <Grid Grid.Row="1">
             <jas:DragCanvas x:Name="canvas_"/>
-            
+
             <local:ElementVarialbes x:Name="ucElementsVariables" Margin="1066,278,402,-60" Visibility="Hidden"/>
-            <TextBox x:Name="tbLabelName" Height="24" Canvas.Left="1048" TextWrapping="Wrap" Canvas.Top="466" Margin="1517,10,10,587" TextChanged="tbLabelName_TextChanged"/>
+
+            <Label Content="Name Label:" HorizontalAlignment="Left" Margin="916,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.684,0.038" Width="80"/>
+            <TextBox x:Name="tbLabelName" Height="24" Canvas.Left="1048" TextWrapping="Wrap" Canvas.Top="466" Margin="1001,10,402,594" TextChanged="tbLabelName_TextChanged"/>
 
             <ListView x:Name="lvLabels" HorizontalAlignment="Left" Height="174" Margin="10,278,0,0" VerticalAlignment="Top" Width="204" SelectionChanged="lvLabels_SelectionChanged">
                 <ListView.ItemContainerStyle>

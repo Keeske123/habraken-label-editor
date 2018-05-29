@@ -33,9 +33,6 @@ namespace Habraken_SLE
     partial void Inserttbl_barcode(tbl_barcode instance);
     partial void Updatetbl_barcode(tbl_barcode instance);
     partial void Deletetbl_barcode(tbl_barcode instance);
-    partial void Inserttbl_User(tbl_User instance);
-    partial void Updatetbl_User(tbl_User instance);
-    partial void Deletetbl_User(tbl_User instance);
     partial void Inserttbl_box(tbl_box instance);
     partial void Updatetbl_box(tbl_box instance);
     partial void Deletetbl_box(tbl_box instance);
@@ -60,6 +57,9 @@ namespace Habraken_SLE
     partial void Inserttbl_userProfile(tbl_userProfile instance);
     partial void Updatetbl_userProfile(tbl_userProfile instance);
     partial void Deletetbl_userProfile(tbl_userProfile instance);
+    partial void Inserttbl_User(tbl_User instance);
+    partial void Updatetbl_User(tbl_User instance);
+    partial void Deletetbl_User(tbl_User instance);
     #endregion
 		
 		public HLE_LinqtoSQLDataContext(string connection) : 
@@ -91,14 +91,6 @@ namespace Habraken_SLE
 			get
 			{
 				return this.GetTable<tbl_barcode>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tbl_User> tbl_Users
-		{
-			get
-			{
-				return this.GetTable<tbl_User>();
 			}
 		}
 		
@@ -163,6 +155,14 @@ namespace Habraken_SLE
 			get
 			{
 				return this.GetTable<tbl_userProfile>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_User> tbl_Users
+		{
+			get
+			{
+				return this.GetTable<tbl_User>();
 			}
 		}
 	}
@@ -487,205 +487,6 @@ namespace Habraken_SLE
 		{
 			this.SendPropertyChanging();
 			entity.tbl_barcode = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Users")]
-	public partial class tbl_User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _UserName;
-		
-		private string _UserID;
-		
-		private System.Nullable<int> _UserProfileID;
-		
-		private bool _IsActive;
-		
-		private EntityRef<tbl_userProfile> _tbl_userProfile;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
-    partial void OnUserIDChanging(string value);
-    partial void OnUserIDChanged();
-    partial void OnUserProfileIDChanging(System.Nullable<int> value);
-    partial void OnUserProfileIDChanged();
-    partial void OnIsActiveChanging(bool value);
-    partial void OnIsActiveChanged();
-    #endregion
-		
-		public tbl_User()
-		{
-			this._tbl_userProfile = default(EntityRef<tbl_userProfile>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this.OnUserNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserProfileID", DbType="Int")]
-		public System.Nullable<int> UserProfileID
-		{
-			get
-			{
-				return this._UserProfileID;
-			}
-			set
-			{
-				if ((this._UserProfileID != value))
-				{
-					if (this._tbl_userProfile.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserProfileIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserProfileID = value;
-					this.SendPropertyChanged("UserProfileID");
-					this.OnUserProfileIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
-		public bool IsActive
-		{
-			get
-			{
-				return this._IsActive;
-			}
-			set
-			{
-				if ((this._IsActive != value))
-				{
-					this.OnIsActiveChanging(value);
-					this.SendPropertyChanging();
-					this._IsActive = value;
-					this.SendPropertyChanged("IsActive");
-					this.OnIsActiveChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_userProfile_tbl_User", Storage="_tbl_userProfile", ThisKey="UserProfileID", OtherKey="Id", IsForeignKey=true)]
-		public tbl_userProfile tbl_userProfile
-		{
-			get
-			{
-				return this._tbl_userProfile.Entity;
-			}
-			set
-			{
-				tbl_userProfile previousValue = this._tbl_userProfile.Entity;
-				if (((previousValue != value) 
-							|| (this._tbl_userProfile.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbl_userProfile.Entity = null;
-						previousValue.tbl_Users.Remove(this);
-					}
-					this._tbl_userProfile.Entity = value;
-					if ((value != null))
-					{
-						value.tbl_Users.Add(this);
-						this._UserProfileID = value.Id;
-					}
-					else
-					{
-						this._UserProfileID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tbl_userProfile");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -2557,6 +2358,205 @@ namespace Habraken_SLE
 		{
 			this.SendPropertyChanging();
 			entity.tbl_userProfile = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_Users")]
+	public partial class tbl_User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _UserName;
+		
+		private string _UserID;
+		
+		private System.Nullable<int> _UserProfileID;
+		
+		private bool _IsActive;
+		
+		private EntityRef<tbl_userProfile> _tbl_userProfile;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnUserIDChanging(string value);
+    partial void OnUserIDChanged();
+    partial void OnUserProfileIDChanging(System.Nullable<int> value);
+    partial void OnUserProfileIDChanged();
+    partial void OnIsActiveChanging(bool value);
+    partial void OnIsActiveChanged();
+    #endregion
+		
+		public tbl_User()
+		{
+			this._tbl_userProfile = default(EntityRef<tbl_userProfile>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserProfileID", DbType="Int")]
+		public System.Nullable<int> UserProfileID
+		{
+			get
+			{
+				return this._UserProfileID;
+			}
+			set
+			{
+				if ((this._UserProfileID != value))
+				{
+					if (this._tbl_userProfile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserProfileIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserProfileID = value;
+					this.SendPropertyChanged("UserProfileID");
+					this.OnUserProfileIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		public bool IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_userProfile_tbl_User", Storage="_tbl_userProfile", ThisKey="UserProfileID", OtherKey="Id", IsForeignKey=true)]
+		public tbl_userProfile tbl_userProfile
+		{
+			get
+			{
+				return this._tbl_userProfile.Entity;
+			}
+			set
+			{
+				tbl_userProfile previousValue = this._tbl_userProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_userProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_userProfile.Entity = null;
+						previousValue.tbl_Users.Remove(this);
+					}
+					this._tbl_userProfile.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_Users.Add(this);
+						this._UserProfileID = value.Id;
+					}
+					else
+					{
+						this._UserProfileID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tbl_userProfile");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

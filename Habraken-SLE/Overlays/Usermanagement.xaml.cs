@@ -27,7 +27,6 @@ namespace Habraken_SLE.Overlays
         {
             InitializeComponent();
 
-            user = new Users(ref btnCancel);
 
         }
 
@@ -36,6 +35,7 @@ namespace Habraken_SLE.Overlays
             if (ucUsers.Visibility == Visibility.Visible)
             {
                 ucUsers.gbAddEditUsers.IsEnabled = true;
+                ucUsers.LoadProfiles();
                 action = "New";
 
                 btnNew.IsEnabled = false;
@@ -57,20 +57,24 @@ namespace Habraken_SLE.Overlays
                         {
                             try
                             {
-                                ucUsers.SaveNewUser();
+                                if (ucUsers.SaveNewUser())
+                                {
+                                    ucUsers.gbAddEditUsers.IsEnabled = false;
+                                    btnNew.IsEnabled = true;
+                                    btnEdit.IsEnabled = true;
+                                    btnDelete.IsEnabled = true;
+                                    btnSave.IsEnabled = false;
+                                    btnCancel.IsEnabled = false;
+
+                                    ucUsers.tbName.Text = "";
+                                    ucUsers.tbOperatortag.Text = "";
+                                    ucUsers.cbRights.Items.Clear();
+                                }
+                               
                             }
                             catch
                             {
                                 MessageBox.Show("Something went wrong while saving the NEW User");
-                            }
-                            finally
-                            {
-                                ucUsers.gbAddEditUsers.IsEnabled = false;
-                                btnNew.IsEnabled = true;
-                                btnEdit.IsEnabled = true;
-                                btnDelete.IsEnabled = true;
-                                btnSave.IsEnabled = false;
-                                btnCancel.IsEnabled = false;
                             }
                         }
                         break;
@@ -85,7 +89,19 @@ namespace Habraken_SLE.Overlays
                                 {
                                     string[] selectedUser = ucUsers.lvUsers.SelectedItem.ToString().Split(',');
 
-                                    ucUsers.UpdateUser(selectedUser[0]);
+                                    if (ucUsers.UpdateUser(selectedUser[0]))
+                                    {
+                                        ucUsers.gbAddEditUsers.IsEnabled = false;
+                                        btnNew.IsEnabled = true;
+                                        btnEdit.IsEnabled = true;
+                                        btnDelete.IsEnabled = true;
+                                        btnSave.IsEnabled = false;
+                                        btnCancel.IsEnabled = false;
+
+                                        ucUsers.tbName.Text = "";
+                                        ucUsers.tbOperatortag.Text = "";
+                                        ucUsers.cbRights.Items.Clear();
+                                    }
                                 }
                             }
                             catch
@@ -163,7 +179,7 @@ namespace Habraken_SLE.Overlays
             {
                 action = "";
 
-                user.CancelAddEditUser();              
+                ucUsers.CancelAddEditUser();              
 
                 btnNew.IsEnabled = true;
                 btnEdit.IsEnabled = true;

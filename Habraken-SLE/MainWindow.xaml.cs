@@ -38,9 +38,13 @@ namespace Habraken_SLE
                 if (MessageBox.Show("Do you really want to log out?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     home.Visibility = Visibility.Collapsed;
+                    home.gridNav.Visibility = Visibility.Visible;
+                    home.gridUsermanagement.Visibility = Visibility.Hidden;
+                    home.gridDesigner.Visibility = Visibility.Hidden;
+                    btnHome.Visibility = Visibility.Collapsed;
                     logo.Visibility = Visibility.Visible;
                     pb_Login.Visibility = Visibility.Visible;
-
+                    lblLogin.Visibility = Visibility.Visible;
                     pb_Login.Clear();
 
                     user.isLoggedIn = false;
@@ -57,6 +61,8 @@ namespace Habraken_SLE
                     home.Visibility = Visibility.Visible;
                     logo.Visibility = Visibility.Collapsed;
                     pb_Login.Visibility = Visibility.Collapsed;
+                    lblLogin.Visibility = Visibility.Collapsed;
+                    btnHome.Visibility = Visibility.Visible;
 
                     imgLogin.Source = new BitmapImage(new Uri(@"\Images\Logout.png", UriKind.RelativeOrAbsolute));
 
@@ -71,8 +77,9 @@ namespace Habraken_SLE
                     else
                     {
                         home.btnDesigner.Visibility = Visibility.Visible;
-                        home.btnUsermanagement.Visibility = Visibility.Visible;
+                        home.btnUsermanagement.Visibility = Visibility.Visible;                        
                     }
+                    btnExit.Visibility = Visibility.Visible;
                 }
                 else
                 {
@@ -91,9 +98,21 @@ namespace Habraken_SLE
 
         private void btnHome_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            home.gridUsermanagement.Visibility = Visibility.Collapsed;
-            home.gridDesigner.Visibility = Visibility.Collapsed;
-            home.gridNav.Visibility = Visibility.Visible;
+            if (!user.canEdit)
+            {                
+                home.btnDesigner.Visibility = Visibility.Hidden;
+                home.btnUsermanagement.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                home.gridNav.Visibility = Visibility.Visible;
+                home.gridDesigner.Visibility = Visibility.Hidden;
+                home.gridUsermanagement.Visibility = Visibility.Hidden;
+                home.btnDesigner.Visibility = Visibility.Visible;
+                home.btnUsermanagement.Visibility = Visibility.Visible;
+                home.Visibility = Visibility.Visible;
+            }
+            btnExit.Visibility = Visibility.Visible;
         }
     }
 }

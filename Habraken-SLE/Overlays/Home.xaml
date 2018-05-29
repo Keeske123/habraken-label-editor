@@ -25,7 +25,8 @@
                     </Style>
                 </Image.Style>
             </Image>
-            <Image x:Name="btnUsermanagement" Source="/Images/UserManagement.png" MouseUp="btnUsermanagement_Click" Margin="1191,234,613,270">
+
+            <Image x:Name="btnUsermanagement" Source="/Images/UserManagement.png" MouseUp="btnUsermanagement_Click" Margin="1191,234,613,270" >
                 <Image.Style>
                     <Style TargetType="Image">
                         <Style.Triggers>
@@ -39,8 +40,12 @@
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                </Image.Style>
+                </Image.Style>                
             </Image>
+
+            <Label Content="Designer"  HorizontalAlignment="Left" Margin="524,343,0,0" VerticalAlignment="Top" FontSize="32" MouseUp="btnDesigner_Click"/>
+            <Label Content="Usermanagement"  HorizontalAlignment="Left" Margin="1118,343,0,0" VerticalAlignment="Top" FontSize="32" MouseUp="btnUsermanagement_Click"/>
+
         </Grid>
 
         <Grid x:Name="gridDesigner" Visibility="Hidden">
